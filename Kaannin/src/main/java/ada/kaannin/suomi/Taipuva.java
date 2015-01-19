@@ -26,15 +26,15 @@ public abstract class Taipuva {
     public String heikkoAste(){
         
         if (!this.astevaihtelu) {
-            return this.lekseemi;
+            return this.sananmuoto;
         }
         this.astevaihtelu = false;
         
-        String vika = this.lekseemi.substring(this.lekseemi.length() - 1);
-        String alku = this.lekseemi.substring(0, this.lekseemi.length() - 4);
-        String muokattava = this.lekseemi.substring(this.lekseemi.length() - 3, this.lekseemi.length() - 2);
+        String vika = this.sananmuoto.substring(this.sananmuoto.length() - 1);
+        String alku = this.sananmuoto.substring(0, this.sananmuoto.length() - 4);
+        String muokattava = this.sananmuoto.substring(this.sananmuoto.length() - 3, this.sananmuoto.length() - 2);
 
-        if (!onVokaali(Character.toString(this.lekseemi.charAt(this.lekseemi.length() - 3)))) {
+        if (!onVokaali(Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 3)))) {
             if (muokattava.equals("pp") || muokattava.equals("tt") || muokattava.equals("kk")) {
                 muokattava = muokattava.substring(1);
             } else if (muokattava.equals("mp")) {

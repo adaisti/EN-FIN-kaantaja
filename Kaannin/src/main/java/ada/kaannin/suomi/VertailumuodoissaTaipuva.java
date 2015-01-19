@@ -11,6 +11,6 @@ package ada.kaannin.suomi;
  */
 public interface VertailumuodoissaTaipuva {
     
-    void asetaVertailumuoto(Vertailumuoto vertailumuoto);
+    void asetaVertailumuoto();
     
 }

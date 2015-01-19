@@ -25,6 +25,8 @@ public abstract class Nomini extends Taipuva {
         this.vokaali = vokaali();
     }
     
+  
+    
     public Nomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu) {
         super(lekseemi, astevaihtelu, lekseemi);
         this.lekseemi = lekseemi;

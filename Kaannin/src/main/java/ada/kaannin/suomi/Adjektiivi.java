@@ -11,7 +11,7 @@ package ada.kaannin.suomi;
  */
 public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
 
-    Vertailumuoto vertailumuoto;
+    private Vertailumuoto vertailumuoto;
     
     public Adjektiivi(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu, Vertailumuoto vertailumuoto) {
         super(lekseemi, luku, sijamuoto, astevaihtelu);
@@ -19,7 +19,7 @@ public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
     }
 
     @Override
-    public void asetaVertailumuoto(Vertailumuoto vertailumuoto) {
+    public void asetaVertailumuoto() {
         
         if (this.vertailumuoto.equals(Vertailumuoto.KOMPARATIIVI)) {
             if (onVokaali(Character.toString(this.lekseemi.charAt(this.lekseemi.length() - 2)))) {
@@ -34,6 +34,13 @@ public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
                 this.sananmuoto += "in";
             }
         } 
+    }
+    
+    @Override
+    public String sananmuoto() {
+        this.asetaVertailumuoto();
+        super.asetaSijamuoto();
+        return this.sananmuoto;
     }
     
 }
