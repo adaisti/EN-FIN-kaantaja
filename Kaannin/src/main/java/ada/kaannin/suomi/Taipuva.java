@@ -28,12 +28,19 @@ public abstract class Taipuva {
         if (!this.astevaihtelu) {
             return this.sananmuoto;
         }
+        
         this.astevaihtelu = false;
         
+        if (this.sananmuoto.length() < 3) {
+            return this.sananmuoto;
+        }
+        
         String vika = this.sananmuoto.substring(this.sananmuoto.length() - 1);
-        String alku = this.sananmuoto.substring(0, this.sananmuoto.length() - 4);
-        String muokattava = this.sananmuoto.substring(this.sananmuoto.length() - 3, this.sananmuoto.length() - 2);
-
+        String alku = this.sananmuoto.substring(0, this.sananmuoto.length() - 3);
+        String muokattava = this.sananmuoto.substring(this.sananmuoto.length() - 3, this.sananmuoto.length() - 1);
+        
+       
+        
         if (!onVokaali(Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 3)))) {
             if (muokattava.equals("pp") || muokattava.equals("tt") || muokattava.equals("kk")) {
                 muokattava = muokattava.substring(1);
@@ -52,8 +59,8 @@ public abstract class Taipuva {
             this.sananmuoto = alku + muokattava + vika;
             return this.sananmuoto;
         } else {
-            muokattava = this.lekseemi.substring(this.lekseemi.length() - 2, this.lekseemi.length() - 2);
-            alku = this.lekseemi.substring(0, this.lekseemi.length() - 3);
+            muokattava = this.sananmuoto.substring(this.sananmuoto.length() - 2, this.sananmuoto.length() - 1);
+            alku = this.sananmuoto.substring(0, this.sananmuoto.length() - 2);
 
             if (muokattava.equals("p")) {
                 muokattava = "v";
@@ -62,7 +69,7 @@ public abstract class Taipuva {
             } else if (muokattava.equals("k")) {
                 muokattava = "";
             }
-
+            
             this.sananmuoto = alku + muokattava + vika;
             return this.sananmuoto;
         }

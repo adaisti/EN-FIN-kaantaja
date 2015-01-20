@@ -36,11 +36,17 @@ public class Pronomini extends Nomini {
         String[] yksi = {"minä", "sinä", "hän", "tämä", "tuo", "se"};
         String[] moni = {"me", "te", "he", "nämä", "nuo", "ne"};
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
             this.yksikossa.add(yksi[i]);
             this.monikossa.add(moni[i]);
         }
     }
     
+    
+    @Override
+    public void asetaSijamuoto() {
+        this.asetaLuku();
+        super.asetaSijamuoto();
+    }
     
 }

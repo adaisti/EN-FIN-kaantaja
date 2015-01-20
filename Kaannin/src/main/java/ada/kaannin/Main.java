@@ -5,14 +5,20 @@
  */
 package ada.kaannin;
 
+import ada.kaannin.suomi.*;
+
 /**
  *
  * @author adahyvarinen
  */
 public class Main {
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            System.out.println("asd");
-        }
+        
+        Substantiivi sana = new Substantiivi("kukka", NomininLuku.MONIKKO, Sijamuoto.PARTITIIVI, true);
+        System.out.println(sana.sananmuoto());
+        
+        Pronomini toinen = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.ADESSIIVI, false);
+        
+        System.out.println(toinen.sananmuoto());
     }
 }
