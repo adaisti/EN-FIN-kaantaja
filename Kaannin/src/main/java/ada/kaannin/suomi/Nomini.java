@@ -73,7 +73,14 @@ public abstract class Nomini extends Taipuva {
             this.sananmuoto += "st";
             this.sananmuoto += super.harmoninenA();
         } else if (this.sijamuoto.equals(Sijamuoto.ILLATIIVI)) {
-            this.sananmuoto += Character.toString(this.sananmuoto.charAt(this.lekseemi.length() - 1));
+            String vikaKirjain = Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 1));
+            
+            if (onVokaali(vikaKirjain)) {
+                this.sananmuoto += vikaKirjain;
+            } else {
+                this.sananmuoto += "ee"; //tätä täytyy vielä miettiä 
+            }
+            
             this.sananmuoto += "n";
         } else if (this.sijamuoto.equals(Sijamuoto.ADESSIIVI)) {
             super.heikkoAste();

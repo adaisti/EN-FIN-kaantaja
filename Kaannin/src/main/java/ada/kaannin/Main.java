@@ -20,5 +20,10 @@ public class Main {
         Pronomini toinen = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.ADESSIIVI, false);
         
         System.out.println(toinen.sananmuoto());
+        
+        
+        Adjektiivi kolmas = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.GENETIIVI, false, Vertailumuoto.KOMPARATIIVI);
+        
+        System.out.println(kolmas.sananmuoto());
     }
 }

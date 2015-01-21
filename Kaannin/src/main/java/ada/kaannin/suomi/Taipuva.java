@@ -97,7 +97,7 @@ public abstract class Taipuva {
     
     
      public Vokaali vokaali() {
-        for (int i = this.lekseemi.length() - 1; i >= 0; i++) {
+        for (int i = this.lekseemi.length() - 1; i >= 0; i--) {
             if (this.lekseemi.charAt(i) == 'y' || this.lekseemi.charAt(i) == 'ä' || this.lekseemi.charAt(i) == 'ö') {
                 return Vokaali.TAKA;
             } else if (this.lekseemi.charAt(i) == 'i' || this.lekseemi.charAt(i) == 'e') {

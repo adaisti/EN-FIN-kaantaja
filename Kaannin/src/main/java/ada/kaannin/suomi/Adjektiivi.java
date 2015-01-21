@@ -22,13 +22,14 @@ public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
     public void asetaVertailumuoto() {
         
         if (this.vertailumuoto.equals(Vertailumuoto.KOMPARATIIVI)) {
-            if (onVokaali(Character.toString(this.lekseemi.charAt(this.lekseemi.length() - 2)))) {
+            if (onVokaali(Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 1)))) {
                 this.sananmuoto += "mpi";
             } else {
                 this.sananmuoto += "empi";
             }
+            this.astevaihtelu = true;
         } else if (this.vertailumuoto.equals(Vertailumuoto.SUPERLATIIVI)) {
-            if (onVokaali(Character.toString(this.lekseemi.charAt(this.lekseemi.length() - 2)))) {
+            if (onVokaali(Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 1)))) {
                 this.sananmuoto += "n";
             } else {
                 this.sananmuoto += "in";
