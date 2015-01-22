@@ -17,20 +17,32 @@ public class Partikkeli implements VertailumuodoissaTaipuva {
     
     public Partikkeli(String lekseemi) {
         this.lekseemi = lekseemi;
+        this.sananmuoto = lekseemi;
+        this.muoto = Vertailumuoto.POSITIIVI;
     }
     
     public Partikkeli(String lekseemi, Vertailumuoto vertailumuoto) {
         this.lekseemi = lekseemi;
         this.muoto = vertailumuoto;
+        this.sananmuoto = lekseemi;
+    }
+    
+    public String sananmuoto() {
+        
+        if (!this.muoto.equals(Vertailumuoto.POSITIIVI)) {
+            asetaVertailumuoto();
+        }
+        
+        return this.sananmuoto;
     }
     
     
     @Override
     public void asetaVertailumuoto() {
         
-        String alku = this.lekseemi.substring(0, this.lekseemi.length() - 5);
+        String alku = this.lekseemi.substring(0, this.lekseemi.length() - 4);
         
-        if (this.lekseemi.substring(this.lekseemi.length() - 4, this.lekseemi.length() - 1).equals("sti")) {
+        if (this.lekseemi.substring(this.lekseemi.length() - 3, this.lekseemi.length()).equals("sti")) {
             
             if (this.muoto.equals(Vertailumuoto.KOMPARATIIVI)) {
                 this.sananmuoto = alku + "emmin";

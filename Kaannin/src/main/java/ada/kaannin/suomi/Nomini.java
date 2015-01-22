@@ -98,10 +98,7 @@ public abstract class Nomini extends Taipuva {
     }
     
     public void asetaMonikonSijamuoto() {
-        
-        
-        
-        
+
         if (this.sijamuoto.equals(Sijamuoto.NOMINATIIVI)) {
             super.heikkoAste();
             this.sananmuoto += "t";
@@ -132,7 +129,13 @@ public abstract class Nomini extends Taipuva {
             this.sananmuoto += super.harmoninenA();
         } else if (this.sijamuoto.equals(Sijamuoto.ABLATIIVI)) {
             super.heikkoAste();
-            this.sananmuoto += "ilt";
+            
+            if (this.sananmuoto.charAt(this.sananmuoto.length() - 1) != 'i') {
+                this.sananmuoto += "ilt";
+            } else {
+                this.sananmuoto += "lt";
+            }
+            
             this.sananmuoto += super.harmoninenA();
         } else if (this.sijamuoto.equals(Sijamuoto.ALLATIIVI)) {
             super.heikkoAste();

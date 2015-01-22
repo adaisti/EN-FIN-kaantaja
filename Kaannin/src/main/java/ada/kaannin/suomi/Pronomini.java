@@ -6,6 +6,7 @@
 package ada.kaannin.suomi;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -13,33 +14,37 @@ import java.util.ArrayList;
  */
 public class Pronomini extends Nomini {
     
-    private ArrayList<String> yksikossa;
-    private ArrayList<String> monikossa;
+    private HashMap<String, String> yksikkoMonikko;
     
     
     public Pronomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu) {
         super(lekseemi, luku, sijamuoto, astevaihtelu);
         
-        this.yksikossa = new ArrayList<String>();
-        this.monikossa = new ArrayList<String>();
+        this.yksikkoMonikko = new HashMap<String, String>();
         
-        this.alustaListat();
+        this.alustaMap();
     }
     
     public void asetaLuku() {
-        if (this.yksikossa.contains(this.lekseemi) && this.luku == NomininLuku.MONIKKO) {
-            this.sananmuoto = this.monikossa.get(this.yksikossa.indexOf(this.lekseemi));
-        }  
+        if (this.yksikkoMonikko.containsKey(lekseemi)) {
+            this.sananmuoto = this.yksikkoMonikko.get(lekseemi);
+            if (this.sijamuoto.equals(Sijamuoto.NOMINATIIVI)) {
+                this.luku = NomininLuku.YKSIKKO;
+            }
+        } 
     }
     
-    public void alustaListat() {
+    public void alustaMap() {
         String[] yksi = {"minä", "sinä", "hän", "tämä", "tuo", "se"};
         String[] moni = {"me", "te", "he", "nämä", "nuo", "ne"};
         
         for (int i = 0; i < 6; i++) {
-            this.yksikossa.add(yksi[i]);
-            this.monikossa.add(moni[i]);
+            this.yksikkoMonikko.put(yksi[i], moni[i]);
         }
+    }
+    
+    public HashMap getYksikkoMonikko() {
+        return this.yksikkoMonikko;
     }
     
     

@@ -14,16 +14,20 @@ import ada.kaannin.suomi.*;
 public class Main {
     public static void main(String[] args) {
         
-        Substantiivi sana = new Substantiivi("kukka", NomininLuku.MONIKKO, Sijamuoto.PARTITIIVI, true);
+//        Substantiivi sana = new Substantiivi("kukka", NomininLuku.MONIKKO, Sijamuoto.PARTITIIVI, true);
+//        System.out.println(sana.sananmuoto());
+//        
+//        Pronomini toinen = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.ADESSIIVI, false);
+//        
+//        System.out.println(toinen.sananmuoto());
+//        
+//        
+//        Adjektiivi kolmas = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.GENETIIVI, false, Vertailumuoto.KOMPARATIIVI);
+//        
+//        System.out.println(kolmas.sananmuoto());
+        
+        Partikkeli sana = new Partikkeli("iloisesti", Vertailumuoto.KOMPARATIIVI);
         System.out.println(sana.sananmuoto());
         
-        Pronomini toinen = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.ADESSIIVI, false);
-        
-        System.out.println(toinen.sananmuoto());
-        
-        
-        Adjektiivi kolmas = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.GENETIIVI, false, Vertailumuoto.KOMPARATIIVI);
-        
-        System.out.println(kolmas.sananmuoto());
     }
 }
