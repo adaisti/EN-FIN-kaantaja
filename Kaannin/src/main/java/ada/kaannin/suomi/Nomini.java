@@ -5,6 +5,9 @@
  */
 package ada.kaannin.suomi;
 
+
+import java.util.HashMap;
+
 /**
  *
  * @author adahyvarinen
@@ -16,24 +19,20 @@ public abstract class Nomini extends Taipuva {
     protected Vokaali vokaali;
     
     public Nomini(String lekseemi) {
-        super(lekseemi, false, lekseemi);
-        this.lekseemi = lekseemi;
+        super(lekseemi, false);
         this.luku = NomininLuku.YKSIKKO;
         this.sijamuoto = Sijamuoto.NOMINATIIVI;
         this.astevaihtelu = false;
-        this.sananmuoto = lekseemi;
         this.vokaali = vokaali();
     }
     
   
     
     public Nomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu) {
-        super(lekseemi, astevaihtelu, lekseemi);
-        this.lekseemi = lekseemi;
+        super(lekseemi, astevaihtelu);
         this.luku = luku;
         this.sijamuoto = sijamuoto;
         this.astevaihtelu = astevaihtelu;
-        this.sananmuoto = lekseemi;
         this.vokaali = vokaali();
     }
     
@@ -53,6 +52,8 @@ public abstract class Nomini extends Taipuva {
     
     
     public void asetaYksikonSijamuoto() {
+        
+        
         if (this.sijamuoto.equals(Sijamuoto.GENETIIVI)) {
             super.heikkoAste();
             this.sananmuoto += "n";
@@ -97,6 +98,10 @@ public abstract class Nomini extends Taipuva {
     }
     
     public void asetaMonikonSijamuoto() {
+        
+        
+        
+        
         if (this.sijamuoto.equals(Sijamuoto.NOMINATIIVI)) {
             super.heikkoAste();
             this.sananmuoto += "t";

@@ -15,10 +15,10 @@ public abstract class Taipuva {
     protected boolean astevaihtelu;
     protected String sananmuoto;
     
-    public Taipuva(String lekseemi, boolean astevaihtelu, String sananmuoto) {
+    public Taipuva(String lekseemi, boolean astevaihtelu) {
         this.lekseemi = lekseemi;
         this.astevaihtelu = astevaihtelu;
-        this.sananmuoto = sananmuoto;
+        this.sananmuoto = lekseemi;
     }
     
     // voisi tehdä metodin joka päättelee onko sanassa astevaihtelu vai ei
