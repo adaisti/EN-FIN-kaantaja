@@ -6,3 +6,4 @@
 - 19.1. 5h: koodaamisen aloitus, sanakirja-luokkien luonti
 - 20.1. 4h: koodaamisen jatkaminen ja ensimmäinen kaavioluonnostelu
 - 21.1. 3h: kaavioden parantelu ja puhtaaksi piirtäminen, ensimmäisten testien tekemisen opettelu
+- 22.1. 2h: testien teko ja koodin korjailu
