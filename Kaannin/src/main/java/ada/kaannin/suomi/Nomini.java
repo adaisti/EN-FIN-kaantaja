@@ -53,95 +53,178 @@ public abstract class Nomini extends Taipuva {
     
     public void asetaYksikonSijamuoto() {
         
-        
         if (this.sijamuoto.equals(Sijamuoto.GENETIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "n";
+            this.yksikonGenetiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.PARTITIIVI)) {
-            this.sananmuoto += super.harmoninenA();
+            this.yksikonPartitiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ESSIIVI)) { 
-            this.sananmuoto += "n";
-            this.sananmuoto += super.harmoninenA();
+            this.yksikonEssiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.TRANSLATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "ksi";
+            this.yksikonTranslatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.INESSIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "ss";
-            this.sananmuoto += super.harmoninenA();
+            this.yksikonInessiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ELATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "st";
-            this.sananmuoto += super.harmoninenA();
+            this.yksikonElatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ILLATIIVI)) {
-            String vikaKirjain = Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 1));
-            
-            if (onVokaali(vikaKirjain)) {
-                this.sananmuoto += vikaKirjain;
-            } else {
-                this.sananmuoto += "ee"; //tätä täytyy vielä miettiä 
-            }
-            
-            this.sananmuoto += "n";
+            this.yksikonIllatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ADESSIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "ll";
-            this.sananmuoto += super.harmoninenA();
+            this.yksikonAdessiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ABLATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "lt";
-            this.sananmuoto += super.harmoninenA();
+            this.yksikonAblatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ALLATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "lle";
+            this.yksikonAllatiivi();
         }
     }
     
     public void asetaMonikonSijamuoto() {
 
         if (this.sijamuoto.equals(Sijamuoto.NOMINATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "t";
+            this.monikonNominatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.GENETIIVI)) {
-            this.sananmuoto += "jen";
+            this.monikonGenetiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.PARTITIIVI)) {
-            this.sananmuoto += "j";
-            this.sananmuoto += super.harmoninenA();
+            this.monikonPartitiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ESSIIVI)) { 
-            this.sananmuoto += "in";
-            this.sananmuoto += super.harmoninenA();
+            this.monikonEssiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.TRANSLATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "iksi";
+            this.monikonTranslatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.INESSIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "iss";
-            this.sananmuoto += super.harmoninenA();
+            this.monikonInessiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ELATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "ist";
-            this.sananmuoto += super.harmoninenA();
+            this.monikonElatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ILLATIIVI)) {
-            this.sananmuoto += "hin";
+            this.monikonIllatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ADESSIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "ill";
-            this.sananmuoto += super.harmoninenA();
+            this.monikonAdessiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ABLATIIVI)) {
-            super.heikkoAste();
-            
-            if (this.sananmuoto.charAt(this.sananmuoto.length() - 1) != 'i') {
-                this.sananmuoto += "ilt";
-            } else {
-                this.sananmuoto += "lt";
-            }
-            
-            this.sananmuoto += super.harmoninenA();
+            this.monikonAblatiivi();
         } else if (this.sijamuoto.equals(Sijamuoto.ALLATIIVI)) {
-            super.heikkoAste();
-            this.sananmuoto += "ille";
+            this.monikonAllatiivi();
         }
     }
    
+    
+    public void yksikonGenetiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "n";
+    }
+    
+    public void yksikonPartitiivi() {
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void yksikonEssiivi() {
+        this.sananmuoto += "n";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void yksikonTranslatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "ksi";
+    }
+    
+    public void yksikonInessiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "ss";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void yksikonElatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "st";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void yksikonIllatiivi() {
+        String vikaKirjain = Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 1));
+            
+        if (onVokaali(vikaKirjain)) {
+            this.sananmuoto += vikaKirjain;
+        } else {
+            this.sananmuoto += "ee"; //tätä täytyy vielä miettiä 
+        }
+
+        this.sananmuoto += "n";
+    }
+    
+    public void yksikonAdessiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "ll";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void yksikonAblatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "lt";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void yksikonAllatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "lle";
+    }
+    
+    public void monikonNominatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "t";
+    }
+    
+    public void monikonGenetiivi() {
+        this.sananmuoto += "jen";
+    }
+    
+    public void monikonPartitiivi() {
+        this.sananmuoto += "j";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void monikonEssiivi() {
+        this.sananmuoto += "in";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void monikonTranslatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "iksi";
+    }
+    
+    public void monikonInessiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "iss";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void monikonElatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "ist";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void monikonIllatiivi() {
+        this.sananmuoto += "hin";
+    }
+    
+    public void monikonAdessiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "ill";
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void monikonAblatiivi() {
+        super.heikkoAste();
+            
+        if (this.sananmuoto.charAt(this.sananmuoto.length() - 1) != 'i') {
+            this.sananmuoto += "ilt";
+        } else {
+            this.sananmuoto += "lt";
+        }
+
+        this.sananmuoto += super.harmoninenA();
+    }
+    
+    public void monikonAllatiivi() {
+        super.heikkoAste();
+        this.sananmuoto += "ille";
+    }
 }
 
