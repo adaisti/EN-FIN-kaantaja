@@ -25,9 +25,7 @@ public abstract class Nomini extends Taipuva {
         this.astevaihtelu = false;
         this.vokaali = vokaali();
     }
-    
-  
-    
+
     public Nomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu) {
         super(lekseemi, astevaihtelu);
         this.luku = luku;
@@ -201,7 +199,7 @@ public abstract class Nomini extends Taipuva {
     }
     
     public void monikonIllatiivi() {
-        this.sananmuoto += "hin";
+        this.sananmuoto += "ihin";
     }
     
     public void monikonAdessiivi() {
