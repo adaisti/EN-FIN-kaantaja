@@ -9,6 +9,6 @@ package ada.kaannin.englanti;
  *
  * @author adahyvarinen
  */
-public class Lause {
-    
+public enum Sanaluokka {
+    SUBSTANTIIVI, ADJEKTIIVI, PARTIKKELI, PRONOMINI, VERBI, NUMERAALI, EISANALUOKKAA;
 }
