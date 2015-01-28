@@ -13,8 +13,8 @@ public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
 
     private Vertailumuoto vertailumuoto;
     
-    public Adjektiivi(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu, Vertailumuoto vertailumuoto) {
-        super(lekseemi, luku, sijamuoto, astevaihtelu);
+    public Adjektiivi(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, Vertailumuoto vertailumuoto) {
+        super(lekseemi, luku, sijamuoto);
         this.vertailumuoto = vertailumuoto;
     }
 

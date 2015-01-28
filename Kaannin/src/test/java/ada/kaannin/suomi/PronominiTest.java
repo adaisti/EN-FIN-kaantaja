@@ -24,25 +24,25 @@ public class PronominiTest {
 
     @Test
     public void testAsetaLukuHuomioiPoikkeukset() {
-        Pronomini sana = new Pronomini("tämä", NomininLuku.MONIKKO, Sijamuoto.NOMINATIIVI, false);
+        Pronomini sana = new Pronomini("tämä", NomininLuku.MONIKKO, Sijamuoto.NOMINATIIVI);
         assertEquals("nämä", sana.sananmuoto());
     }
     
     @Test
     public void testAsetaLukuJattaaHuomiottaNormaalit() {
-        Pronomini sana = new Pronomini("muu", NomininLuku.MONIKKO, Sijamuoto.NOMINATIIVI, false);
+        Pronomini sana = new Pronomini("muu", NomininLuku.MONIKKO, Sijamuoto.NOMINATIIVI);
         assertEquals("muut", sana.sananmuoto());
     }
 
     @Test
     public void testAlustaMapAlustetaaOikein() {
-        Pronomini sana = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.NOMINATIIVI, false);
+        Pronomini sana = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.NOMINATIIVI);
         assertEquals("me", sana.getYksikkoMonikko().get("minä"));
     }
 
     @Test
     public void testAsetaSijamuotoOsaaSijamuotoja() {
-        Pronomini sana = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.ADESSIIVI, false);
+        Pronomini sana = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.ADESSIIVI);
         assertEquals("meillä", sana.sananmuoto());
     }
     

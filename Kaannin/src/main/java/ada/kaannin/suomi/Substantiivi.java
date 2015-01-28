@@ -11,8 +11,8 @@ package ada.kaannin.suomi;
  */
 public class Substantiivi extends Nomini {
 
-    public Substantiivi(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu) {
-        super(lekseemi, luku, sijamuoto, astevaihtelu);
+    public Substantiivi(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto) {
+        super(lekseemi, luku, sijamuoto);
     }
 
 }

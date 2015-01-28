@@ -19,19 +19,15 @@ public abstract class Nomini extends Taipuva {
     protected Vokaali vokaali;
     
     public Nomini(String lekseemi) {
-        super(lekseemi, false);
+        super(lekseemi);
         this.luku = NomininLuku.YKSIKKO;
         this.sijamuoto = Sijamuoto.NOMINATIIVI;
-        this.astevaihtelu = false;
-        this.vokaali = vokaali();
     }
 
-    public Nomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu) {
-        super(lekseemi, astevaihtelu);
+    public Nomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto) {
+        super(lekseemi);
         this.luku = luku;
         this.sijamuoto = sijamuoto;
-        this.astevaihtelu = astevaihtelu;
-        this.vokaali = vokaali();
     }
     
     

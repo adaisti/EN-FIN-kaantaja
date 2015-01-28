@@ -15,8 +15,8 @@ public class Verbi extends Taipuva {
     private Modus modus;
     private Aikamuoto aikamuoto;
     
-    public Verbi(String lekseemi, boolean astevaihtelu, Persoona persoona, Modus modus, Aikamuoto aikamuoto) {
-        super(lekseemi, astevaihtelu);
+    public Verbi(String lekseemi, Persoona persoona, Modus modus, Aikamuoto aikamuoto) {
+        super(lekseemi);
         this.persoona = persoona;
         this.modus = modus;
         this.aikamuoto = aikamuoto;
@@ -120,6 +120,12 @@ public class Verbi extends Taipuva {
     
     public void passiivi() {
         super.heikkoAste();
+        
+        if (this.sananmuoto.charAt(this.sananmuoto.length() - 1) == 'a') {
+            this.sananmuoto = this.sananmuoto.substring(0, this.sananmuoto.length() - 1);
+            this.sananmuoto += "e";
+        }
+        
         this.sananmuoto += "taan";
     }
     

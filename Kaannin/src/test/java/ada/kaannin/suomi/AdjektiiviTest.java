@@ -24,19 +24,19 @@ public class AdjektiiviTest {
 
     @Test
     public void testAsetaVertailumuotoKomparatiiviNominatiivi() {
-        Adjektiivi sana = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.NOMINATIIVI, false, Vertailumuoto.KOMPARATIIVI);
+        Adjektiivi sana = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.NOMINATIIVI, Vertailumuoto.KOMPARATIIVI);
         assertEquals("nopeampi", sana.sananmuoto());
     }
     
     @Test
     public void testAsetaVertailumuotoKomparatiiviInessiivi() {
-        Adjektiivi sana = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.INESSIIVI, false, Vertailumuoto.KOMPARATIIVI);
+        Adjektiivi sana = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.INESSIIVI, Vertailumuoto.KOMPARATIIVI);
         assertEquals("nopeammissa", sana.sananmuoto());
     }
     
     @Test
     public void testSijamuodotToimiiAblatiivinMonikko() {
-        Adjektiivi sana = new Adjektiivi("pieni", NomininLuku.MONIKKO, Sijamuoto.ABLATIIVI, false, Vertailumuoto.POSITIIVI);
+        Adjektiivi sana = new Adjektiivi("pieni", NomininLuku.MONIKKO, Sijamuoto.ABLATIIVI, Vertailumuoto.POSITIIVI);
         assertEquals("pieniltä", sana.sananmuoto());
     }
 

@@ -14,17 +14,32 @@ public abstract class Taipuva {
     protected String lekseemi;
     protected boolean astevaihtelu;
     protected String sananmuoto;
+    protected Vokaali vokaali;
     
-    public Taipuva(String lekseemi, boolean astevaihtelu) {
+    public Taipuva(String lekseemi) {
         this.lekseemi = lekseemi;
-        this.astevaihtelu = astevaihtelu;
         this.sananmuoto = lekseemi;
+        this.vokaali = vokaali();
     }
     
-    // voisi tehdä metodin joka päättelee onko sanassa astevaihtelu vai ei
-
+    public boolean astevaihtelu() {
+        String vika = this.sananmuoto.substring(this.sananmuoto.length() - 1);
+        String tokavika = this.sananmuoto.substring(this.sananmuoto.length() - 2, this.sananmuoto.length() - 1);
+        
+        if (onVokaali(vika)) {
+            if (tokavika.equals("k") || tokavika.equals("p") || tokavika.equals("t")) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    
     
     public String heikkoAste(){
+        
+        this.astevaihtelu = astevaihtelu();
         
         if (!this.astevaihtelu || this.sananmuoto.length() < 3) {
             return this.sananmuoto;

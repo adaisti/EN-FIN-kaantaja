@@ -17,8 +17,8 @@ public class Pronomini extends Nomini {
     private HashMap<String, String> yksikkoMonikko;
     
     
-    public Pronomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto, boolean astevaihtelu) {
-        super(lekseemi, luku, sijamuoto, astevaihtelu);
+    public Pronomini(String lekseemi, NomininLuku luku, Sijamuoto sijamuoto) {
+        super(lekseemi, luku, sijamuoto);
         
         this.yksikkoMonikko = new HashMap<String, String>();
         

@@ -76,10 +76,13 @@ public class VerbiTest {
 
     @Test
     public void testMon3Pers() {
+        
     }
 
     @Test
     public void testPassiivi() {
+        Verbi sana = new Verbi("kaventaa", Persoona.PASSIIVI, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavennetaan", sana.sananmuoto());
     }
     
 }
