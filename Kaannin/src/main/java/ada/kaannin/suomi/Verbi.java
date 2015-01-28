@@ -100,7 +100,7 @@ public class Verbi extends Taipuva {
     
     public void yks3Pers() {
         if (this.modus.equals(Modus.INDIKATIIVI)) {
-            this.sananmuoto += this.sananmuoto.substring(this.sananmuoto.length() - 1, this.sananmuoto.length() - 1);
+            this.sananmuoto += this.sananmuoto.substring(this.sananmuoto.length() - 1);
         }
     }
     

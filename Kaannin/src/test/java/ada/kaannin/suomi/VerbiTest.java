@@ -24,59 +24,92 @@ public class VerbiTest {
 
     @Test
     public void testSananmuoto() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON1, Modus.KONDITIONAALI, Aikamuoto.PREESENS);
+        assertEquals("kaventaisimme", sana.sananmuoto());
     }
 
     @Test
     public void testAsetaModus() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON1, Modus.KONDITIONAALI, Aikamuoto.PREESENS);
+        assertEquals("kaventaisimme", sana.sananmuoto());
     }
 
     @Test
     public void testIndikatiivi() {
+        Verbi sana = new Verbi("kaventaa", Persoona.YKS1, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavennan", sana.sananmuoto());
     }
 
     @Test
     public void testKonditionaali() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON1, Modus.KONDITIONAALI, Aikamuoto.PREESENS);
+        assertEquals("kaventaisimme", sana.sananmuoto());
     }
 
     @Test
     public void testPotentiaali() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON1, Modus.POTENTIAALI, Aikamuoto.PREESENS);
+        assertEquals("kaventanemme", sana.sananmuoto());
     }
 
     @Test
     public void testImperatiivi() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON2, Modus.IMPERATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kaventakaa", sana.sananmuoto());
     }
 
     @Test
-    public void testAsetaImperatiivinPersoona() {
+    public void testAsetaImperatiivinPersoonaYksikko() {
+        Verbi sana = new Verbi("kaventaa", Persoona.YKS2, Modus.IMPERATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavenna", sana.sananmuoto());
+    }
+    
+    @Test
+    public void testAsetaImperatiivinPersoonaMonikko() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON2, Modus.IMPERATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kaventakaa", sana.sananmuoto());
     }
 
     @Test
     public void testAsetaPersoona() {
+        Verbi sana = new Verbi("kaventaa", Persoona.YKS1, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavennan", sana.sananmuoto());
     }
 
     @Test
     public void testYks1Pers() {
+        Verbi sana = new Verbi("kaventaa", Persoona.YKS1, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavennan", sana.sananmuoto());
     }
 
     @Test
     public void testYks2Pers() {
+        Verbi sana = new Verbi("kaventaa", Persoona.YKS2, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavennat", sana.sananmuoto());
     }
 
     @Test
     public void testYks3Pers() {
+        Verbi sana = new Verbi("kaventaa", Persoona.YKS3, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kaventaa", sana.sananmuoto());
     }
 
     @Test
     public void testMon1Pers() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON1, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavennamme", sana.sananmuoto());
     }
 
     @Test
     public void testMon2Pers() {
+        Verbi sana = new Verbi("kaventaa", Persoona.MON2, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kavennatte", sana.sananmuoto());
     }
 
     @Test
     public void testMon3Pers() {
-        
+        Verbi sana = new Verbi("kaventaa", Persoona.MON3, Modus.INDIKATIIVI, Aikamuoto.PREESENS);
+        assertEquals("kaventavat", sana.sananmuoto());
     }
 
     @Test

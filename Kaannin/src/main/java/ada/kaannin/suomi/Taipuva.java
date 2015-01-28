@@ -44,8 +44,6 @@ public abstract class Taipuva {
         if (!this.astevaihtelu || this.sananmuoto.length() < 3) {
             return this.sananmuoto;
         }
-        
-        this.astevaihtelu = false;
 
         if (!onVokaali(Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 3)))) {
             return this.heikkoAsteKaksiKirjaintaMuuttuu();
