@@ -15,5 +15,9 @@ public class Hakemistonhallinta {
         
     }
     
-    
+        
+    // tämä Hakemistonhallintaan
+//    public void lisaaPrepositio(String englanti, Sijamuoto sijamuoto) {
+//        this.prepositiot.put(englanti, sijamuoto);
+//    }
 }
