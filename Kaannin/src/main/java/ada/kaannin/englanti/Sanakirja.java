@@ -42,6 +42,14 @@ public class Sanakirja {
         return eiKaannosta;
     }
     
+    public ArrayList<Sanaluokka> haeKaannoksenSanaluokka(String englanti) {
+        ArrayList<Sanaluokka> tamanSanaluokat = new ArrayList<Sanaluokka>();
+        for (String suomi : this.haeKaannos(englanti).keySet()) {
+            tamanSanaluokat.add(this.suomenSanat.get(suomi));
+        }
+        return tamanSanaluokat;
+    }
+    
     public HashMap parempiKaannos(String englanti) {
         // tässä hyödynnetään predikaattitietoutta
         // ja tutkitaan kumpi kahdesta käännöksestä on parempi

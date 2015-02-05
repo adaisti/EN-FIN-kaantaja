@@ -32,7 +32,7 @@ public class NomininSyntaksihaku {
     }
     
     
-    
+    // WTF täytyy tehdä tälle luokalle jotain
     
 
     public Sijamuoto sijamuoto() {

@@ -14,55 +14,55 @@ import java.util.ArrayList;
 public class Lause {
     
     String teksti;
-    ArrayList<String> lausekkeet;
+    ArrayList<Lauseke> lausekkeet;
     SyntaksiSanakirja ss;
+    Sanakirja s;
     
-    public Lause(SyntaksiSanakirja syntaksisanakirja, String teksti) {
+    public Lause(SyntaksiSanakirja syntaksisanakirja, Sanakirja sanakirja, String teksti) {
         this.ss = syntaksisanakirja;
+        this.s = sanakirja;
         this.teksti = teksti;
+        this.lausekkeet = new ArrayList<Lauseke>();
     }
     
     public void jaaLausekkeiksi() {
-        
+
         String[] osat = this.jaaSanoiksi();
-        String lauseke;
+        String lausekkeenTeksti = "";
+        int osienMaara = 0;
         int i = 0;
         
-        while(i < osat.length) {
-            lauseke = osat[i];
-            while (onPrepositio(osat[i]) || onNumero(osat[i]) || onArtikkeli(osat[i])) {
+        while (i < osat.length) {
+            
+            while (!onLausekkeenLoppu(osat[i])) {
+                lausekkeenTeksti += osat[i];
+                osienMaara++;
                 i++;
-                lauseke += osat[i];
             }
-            this.lausekkeet.add(lauseke);
-            i++;
+            
+            Lauseke lauseke = new Lauseke(lausekkeenTeksti, osienMaara);
+            lausekkeet.add(lauseke);
+            teksti = "";
+            osienMaara = 0;
         }
+        
     }
     
-    // nämä jaotellut "esipaistetut" lausekkeet pitäisi varmaan laittaa johonkin
-    // ja hyödyntää niitä siellä
-    
-    public ArrayList<String> lausekkeet() {
+    public ArrayList<Lauseke> lausekkeet() {
         return this.lausekkeet;
     }
-    
-    // Tämä metodi saattaa olla turha
-    
-//    public int laskeValilyonnit() {
-//        int valilyonteja = 0;
-//        for (int i = 0; i < 10; i++) {
-//            if (this.teksti.charAt(i) == ' ') {
-//                valilyonteja++;
-//            }
-//        }
-//        return valilyonteja;
-//    }
     
     public String[] jaaSanoiksi() {
         String[] osat = this.teksti.split(" ");
         return osat;
     }
     
+    public boolean onLausekkeenLoppu(String sana) {
+        if (onPrepositio(sana) || onNumero(sana) || onArtikkeli(sana) || onAdjektiivi(sana) || onPronomini(sana)) {
+            return false;
+        }
+        return true;
+    }
     
     
     public boolean onPrepositio(String sana) {
@@ -86,5 +86,22 @@ public class Lause {
         return false;
     }
     
+    public boolean onAdjektiivi(String sana) {
+        for (Sanaluokka luokka : s.haeKaannoksenSanaluokka(sana)) {
+            if (!luokka.equals(Sanaluokka.ADJEKTIIVI)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean onPronomini(String sana) {
+        for (Sanaluokka luokka : s.haeKaannoksenSanaluokka(sana)) {
+            if (!luokka.equals(Sanaluokka.PRONOMINI)) {
+                return false;
+            }
+        }
+        return true;
+    }
     
 }
