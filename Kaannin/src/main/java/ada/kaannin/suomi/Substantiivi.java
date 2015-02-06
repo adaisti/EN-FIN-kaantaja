@@ -8,6 +8,8 @@ package ada.kaannin.suomi;
 /**
  *
  * @author adahyvarinen
+ * 
+ * Käsittelee substantiiveja
  */
 public class Substantiivi extends Nomini {
 

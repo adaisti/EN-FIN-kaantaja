@@ -8,6 +8,11 @@ package ada.kaannin.suomi;
 /**
  *
  * @author adahyvarinen
+ * 
+ * Luokka käsittelee partikkeleja,
+ * jotka joko eivät taivu
+ * tai taipuvat vertailumuodoissa
+ * 
  */
 public class Partikkeli implements VertailumuodoissaTaipuva {
 
@@ -35,6 +40,10 @@ public class Partikkeli implements VertailumuodoissaTaipuva {
         
         return this.sananmuoto;
     }
+    
+    /**
+     * Asettaa sanamuodon oikeaan vertailumuotoon
+     */
     
     
     @Override

@@ -25,28 +25,34 @@ public class Lause {
         this.lausekkeet = new ArrayList<Lauseke>();
     }
     
+    /**
+     * Metodi jakaa luokalle konstruktorissa annetun
+     * tekstin lausekkeiksi
+     */
+
+
+    
     public void jaaLausekkeiksi() {
 
         String[] osat = this.jaaSanoiksi();
         String lausekkeenTeksti = "";
-        int osienMaara = 0;
         int i = 0;
         
         while (i < osat.length) {
             
             while (!onLausekkeenLoppu(osat[i])) {
                 lausekkeenTeksti += osat[i];
-                osienMaara++;
+                lausekkeenTeksti += " ";
                 i++;
             }
             
-            Lauseke lauseke = new Lauseke(lausekkeenTeksti, osienMaara);
+            Lauseke lauseke = new Lauseke(lausekkeenTeksti);
             lausekkeet.add(lauseke);
             teksti = "";
-            osienMaara = 0;
         }
         
     }
+    
     
     public ArrayList<Lauseke> lausekkeet() {
         return this.lausekkeet;
@@ -56,6 +62,14 @@ public class Lause {
         String[] osat = this.teksti.split(" ");
         return osat;
     }
+    
+    /**
+     * Metodi tutkii voiko annettu sana olla lausekkeen loppu
+     *
+     * @param   sana   Lausekkeessa esiintyvä sana
+     * 
+     * @return  false, jos annettu sana ei lopeta lauseketta, muuten true 
+    */
     
     public boolean onLausekkeenLoppu(String sana) {
         if (onPrepositio(sana) || onNumero(sana) || onArtikkeli(sana) || onAdjektiivi(sana) || onPronomini(sana)) {

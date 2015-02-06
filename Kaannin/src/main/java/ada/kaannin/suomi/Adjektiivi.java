@@ -8,7 +8,14 @@ package ada.kaannin.suomi;
 /**
  *
  * @author adahyvarinen
+ * 
+ * Luokka käsittelee adjektiiveja
+ * joita voidaan taivuttaa sijamuodoissa Nomini-luokan metodeilla
+ * sekä vertailumuodoissa
  */
+
+
+
 public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
 
     private Vertailumuoto vertailumuoto;
@@ -18,6 +25,14 @@ public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
         this.vertailumuoto = vertailumuoto;
     }
 
+    
+    
+    /*
+    * Toteuttaa VertailumuodoissaTaipuva-rajapinnan
+    * Asettaa sananmuodon oikeaan vertailumuotoon
+    * 
+    */
+    
     @Override
     public void asetaVertailumuoto() {
         

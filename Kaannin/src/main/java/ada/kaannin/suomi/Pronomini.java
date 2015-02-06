@@ -5,12 +5,13 @@
  */
 package ada.kaannin.suomi;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  *
  * @author adahyvarinen
+ * 
+ * Luokka käsittelee pronomineja
  */
 public class Pronomini extends Nomini {
     
@@ -24,6 +25,11 @@ public class Pronomini extends Nomini {
         
         this.alustaMap();
     }
+    
+    /**
+     * Asettaa pronominin luvun oikein
+     * Huomioi sen, että yleensä morfologinen ero on suuri
+     */
     
     public void asetaLuku() {
         if (this.yksikkoMonikko.containsKey(lekseemi)) {

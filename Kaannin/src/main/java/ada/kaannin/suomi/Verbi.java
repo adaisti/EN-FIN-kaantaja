@@ -8,6 +8,11 @@ package ada.kaannin.suomi;
 /**
  *
  * @author adahyvarinen
+ * 
+ * Käsittelee verbejä
+ * Ei osaa käsitellä kovin montaa eri aikamuotoa, vaikka aikamuoto-rakennetta onkin alustettu,
+ * sillä neuleohjeissa kaikki on yleensä preesenssissä
+ * 
  */
 public class Verbi extends Taipuva {
 

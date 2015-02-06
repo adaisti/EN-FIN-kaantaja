@@ -11,7 +11,13 @@ import java.util.HashMap;
 /**
  *
  * @author adahyvarinen
+ * 
+ * 
+ * Luokka tekee kaikille nomineille yhteiset operaatiot,
+ * lähinnä asettaa ne oikeaan sijamuotoon
  */
+
+
 public abstract class Nomini extends Taipuva {
     
     protected NomininLuku luku;
@@ -36,6 +42,13 @@ public abstract class Nomini extends Taipuva {
         return this.sananmuoto;
     }
  
+    /**
+     * Luokan tärkein kattometodi
+     * Asettaa sananmuodon oikeaan sijamuotoon
+     * Hyödyntää muita luokan metodeja
+     */
+    
+    
     public void asetaSijamuoto() {
         if (this.luku.equals(NomininLuku.YKSIKKO)) {
             asetaYksikonSijamuoto();
@@ -44,6 +57,10 @@ public abstract class Nomini extends Taipuva {
         }
     }
     
+    /**
+     * Asettaa yksikölle oikean sijamuodon
+     * Hyödyntää apumetodeja
+     */
     
     public void asetaYksikonSijamuoto() {
         
@@ -69,6 +86,11 @@ public abstract class Nomini extends Taipuva {
             this.yksikonAllatiivi();
         }
     }
+    
+    /**
+     * Asettaa monikolle oikean sijamuodon
+     * Hyödyntää apumetodeja
+     */
     
     public void asetaMonikonSijamuoto() {
 

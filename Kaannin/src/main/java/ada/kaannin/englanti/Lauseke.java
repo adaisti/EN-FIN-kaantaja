@@ -12,10 +12,35 @@ package ada.kaannin.englanti;
 public class Lauseke {
     
     String lekseemi;
+    String teksti;
     
-    public Lauseke(String teksti, int osienMaara) {
-        
+    public Lauseke(String teksti) {
+        this.teksti = teksti;
+        this.lekseemi = "";
     }
+    
+    public String[] jaaSanoiksi() {
+        String[] osat = this.teksti.split(" ");
+        return osat;
+    }
+    
+    public void asetaLekseemi() {
+        this.lekseemi = this.jaaSanoiksi()[this.jaaSanoiksi().length - 1];
+        if (onMonikko()) {
+            this.lekseemi = this.lekseemi.substring(0, this.lekseemi.length() - 1);
+        } 
+    }
+    
+    public boolean onMonikko() {
+        if (this.teksti.charAt(this.teksti.length() - 1) == 's') {
+            // pitää tarkistaa onko myös substantiivi
+            // ja löytyykö ylipäätään sanakirjasta
+            return true;
+        }
+        return false;
+    }
+    
+    
     
     
 }

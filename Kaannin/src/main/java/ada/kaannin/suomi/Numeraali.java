@@ -8,6 +8,9 @@ package ada.kaannin.suomi;
 /**
  *
  * @author adahyvarinen
+ * 
+ * Luokka käsittelee numeraaleja
+ * 
  */
 public class Numeraali extends Nomini {
 
