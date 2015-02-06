@@ -7,3 +7,13 @@
 - 20.1. 4h: koodaamisen jatkaminen ja ensimmäinen kaavioluonnostelu
 - 21.1. 3h: kaavioden parantelu ja puhtaaksi piirtäminen, ensimmäisten testien tekemisen opettelu
 - 22.1. 2h: testien teko ja koodin korjailu
+- 25.1. 2h: koodaaminen
+- 26.1. 2h: koodaaminen
+- 27.1. 4h: koodaaminen
+- 28.1. 2h: kaavioiden piirtely
+- 29.1. 3h: koodaaminen
+- 2.2. 2h: koodaaminen
+- 3.2. 1h: rakenteen pohtiminen
+- 4.2. 3h: koodaaminen
+- 5.2. 3h: koodaaminen ja javadocin opettelu
+- 6.2. 2h: javadocin parantelu, koodaaminen
