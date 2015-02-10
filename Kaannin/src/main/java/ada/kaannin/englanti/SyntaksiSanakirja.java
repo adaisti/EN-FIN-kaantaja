@@ -5,7 +5,9 @@
  */
 package ada.kaannin.englanti;
 
+import ada.kaannin.suomi.Persoona;
 import ada.kaannin.suomi.Sijamuoto;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,11 +21,20 @@ public class SyntaksiSanakirja {
     private HashMap<String, Sijamuoto> prepositiot;
     private HashMap<String, Sijamuoto> numerot;
     private HashSet<String> artikkelit;
+    private HashMap<String, Persoona> verbipaatteet;
     
     public SyntaksiSanakirja() {
         this.prepositiot = new HashMap<String, Sijamuoto>();
         this.numerot = new HashMap<String, Sijamuoto>();
         this.artikkelit = new HashSet<String>();
+        this.verbipaatteet = new HashMap<String, Persoona>();
+    }
+    
+    public void alustaKaikki() {
+        alustaPrepositiotMappi();
+        alustaNumerotMappi();
+        alustaArtikkelitSetti();
+        alustaVerbipaatteetMappi();
     }
     
     public void alustaPrepositiotMappi() {
@@ -34,9 +45,18 @@ public class SyntaksiSanakirja {
         // tänne lista numeroista ja niiden Sijamuodoista
     }
     
+    public void alustaVerbipaatteetMappi() {
+       
+        // tänne lista siitä mitä verbipäätteitä on olemassa
+        // testausta varten jo jotain lisätty
+        this.verbipaatteet.put("s", Persoona.YKS1);
+        // hmm jotain täytyy tehdä tolle Persoona-osiolle koska
+        // se ei ole aina oleellinen
+    }
+    
     public void alustaArtikkelitSetti() {
         String[] artikkelitTaulukko = {"the", "a", "an"};
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < artikkelitTaulukko.length; i++) {
             this.artikkelit.add(artikkelitTaulukko[i]);
         }
     }
@@ -52,6 +72,11 @@ public class SyntaksiSanakirja {
     public HashSet<String> artikkelit() {
         return this.artikkelit;
     }
+    
+    public HashMap<String, Persoona> verbipaatteet() {
+        return this.verbipaatteet;
+    }
+    
     
     
     

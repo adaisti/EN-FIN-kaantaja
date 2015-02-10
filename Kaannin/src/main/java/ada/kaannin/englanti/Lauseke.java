@@ -11,12 +11,16 @@ package ada.kaannin.englanti;
  */
 public class Lauseke {
     
-    String lekseemi;
-    String teksti;
+    private String lekseemi;
+    private String teksti;
+    private Sanakirja s;
+    private SyntaksiSanakirja ss;
     
-    public Lauseke(String teksti) {
+    public Lauseke(String teksti, Sanakirja s, SyntaksiSanakirja ss) {
         this.teksti = teksti;
         this.lekseemi = "";
+        this.s = s;
+        this.ss = ss;
     }
     
     public String[] jaaSanoiksi() {
@@ -25,20 +29,63 @@ public class Lauseke {
     }
     
     public void asetaLekseemi() {
-        this.lekseemi = this.jaaSanoiksi()[this.jaaSanoiksi().length - 1];
-        if (onMonikko()) {
-            this.lekseemi = this.lekseemi.substring(0, this.lekseemi.length() - 1);
-        } 
+        String mahdollinenLekseemi = this.jaaSanoiksi()[this.jaaSanoiksi().length - 1];
+        if (onMonikko(mahdollinenLekseemi)) {
+            mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
+        }
+        // tarkistetaan onko verbipääte
+        // tarkistetaanko myös onko edes Sanakirjassa?
+        this.lekseemi = mahdollinenLekseemi;
     }
     
-    public boolean onMonikko() {
-        if (this.teksti.charAt(this.teksti.length() - 1) == 's') {
-            // pitää tarkistaa onko myös substantiivi
-            // ja löytyykö ylipäätään sanakirjasta
-            return true;
+    public boolean onMonikko(String mahdollinenLekseemi) {
+        if (mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - 1) == 's') {
+            mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
+            if (s.sisaltaaSanan(mahdollinenLekseemi) && s.onSubstantiivi(mahdollinenLekseemi)) {
+                return true;
+            }
         }
         return false;
     }
+    
+    public boolean onVerbimuoto(String mahdollinenLekseemi) {
+        if (s.onVerbi(mahdollinenLekseemi)) {
+            return true;
+        } else if (voiOllaVerbi(mahdollinenLekseemi)) {
+            if (etsiVerbipaate(mahdollinenLekseemi) != null) {
+                // lisaa verbipaate johonkin fiksuun kohtaan
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean voiOllaVerbi(String mahdollinenLekseemi) {
+        for (int i = 0; i <= mahdollinenLekseemi.length(); i++) {
+            if (s.onVerbi(mahdollinenLekseemi.substring(0, i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public String etsiVerbipaate(String mahdollinenLekseemi) {
+        for (String paate : ss.verbipaatteet().keySet()) {
+            if (mahdollinenLekseemi.contains(paate)) {
+                if (s.onVerbi(mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - paate.length()))
+                        || (s.onVerbi(mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - paate.length() - 1))
+                        && mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - paate.length()) == mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - paate.length() - 1))) {
+                    return paate;
+                }
+            }
+        }
+        return null;
+    }
+    
+    public String lekseemi() {
+        return this.lekseemi;
+    }
+    
     
     
     

@@ -30,8 +30,6 @@ public class Lause {
      * tekstin lausekkeiksi
      */
 
-
-    
     public void jaaLausekkeiksi() {
 
         String[] osat = this.jaaSanoiksi();
@@ -46,7 +44,7 @@ public class Lause {
                 i++;
             }
             
-            Lauseke lauseke = new Lauseke(lausekkeenTeksti);
+            Lauseke lauseke = new Lauseke(lausekkeenTeksti, s, ss);
             lausekkeet.add(lauseke);
             teksti = "";
         }
@@ -72,7 +70,7 @@ public class Lause {
     */
     
     public boolean onLausekkeenLoppu(String sana) {
-        if (onPrepositio(sana) || onNumero(sana) || onArtikkeli(sana) || onAdjektiivi(sana) || onPronomini(sana)) {
+        if (onPrepositio(sana) || onNumero(sana) || onArtikkeli(sana) || s.onAdjektiivi(sana) || s.onPronomini(sana)) {
             return false;
         }
         return true;
@@ -100,22 +98,8 @@ public class Lause {
         return false;
     }
     
-    public boolean onAdjektiivi(String sana) {
-        for (Sanaluokka luokka : s.haeKaannoksenSanaluokka(sana)) {
-            if (!luokka.equals(Sanaluokka.ADJEKTIIVI)) {
-                return false;
-            }
-        }
-        return true;
-    }
     
-    public boolean onPronomini(String sana) {
-        for (Sanaluokka luokka : s.haeKaannoksenSanaluokka(sana)) {
-            if (!luokka.equals(Sanaluokka.PRONOMINI)) {
-                return false;
-            }
-        }
-        return true;
-    }
+    
+    
     
 }

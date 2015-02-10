@@ -22,6 +22,11 @@ public abstract class Taipuva {
         this.vokaali = vokaali();
     }
     
+    /**
+     * Alkeellinen tapa tutkia onko jossakin sanassa astevaihtelu
+     * @return true jos sanassa voi esiintyä astevaihtelua, muuten false
+     */
+    
     public boolean astevaihtelu() {
         String vika = this.sananmuoto.substring(this.sananmuoto.length() - 1);
         String tokavika = this.sananmuoto.substring(this.sananmuoto.length() - 2, this.sananmuoto.length() - 1);
@@ -35,7 +40,12 @@ public abstract class Taipuva {
         return false;
     }
     
-    
+    /**
+     * Kattometodi sananmuodon heikkoasteisen astevaihtelumuodon sanavartalon muodostamiseksi
+     * Esim puikko: puiko
+     * 
+     * @return sanavartalo
+     */
     
     public String heikkoAste(){
         
@@ -51,6 +61,11 @@ public abstract class Taipuva {
             return this.heikkoAsteYksiKirjainMuuttuu();
         }
     }
+    
+    /**
+     * 
+     * @return yhtä kirjainta vastaava heikkoasteinen kirjain
+     */
     
     public String heikkoAsteYksiKirjainMuuttuu() {
         String muokattava = this.sananmuoto.substring(this.sananmuoto.length() - 2, this.sananmuoto.length() - 1);
@@ -69,6 +84,12 @@ public abstract class Taipuva {
         this.sananmuoto = alku + muokattava + vika;
         return this.sananmuoto;
     }
+    
+    /**
+     * 
+     * 
+     * @return kahta kirjainta vastaava heikkoasteinen merkkijono
+     */
     
     public String heikkoAsteKaksiKirjaintaMuuttuu() {
         String vika = this.sananmuoto.substring(this.sananmuoto.length() - 1);
@@ -93,12 +114,26 @@ public abstract class Taipuva {
         return this.sananmuoto;
     }
     
+    /**
+     * Tutkii onko joku kirjain vokaali
+     * 
+     * @param kirjain
+     * @return true jos kirjain on vokaali, muuten false
+     */
+    
     public boolean onVokaali(String kirjain) {
         if (kirjain.equals("a") || kirjain.equals("e") || kirjain.equals("i") || kirjain.equals("o") || kirjain.equals("u") || kirjain.equals("y") || kirjain.equals("ä") || kirjain.equals("ö")) {
             return true;
         }
         return false;
     }
+    
+    /**
+     * Metodi palauttaa a tai ä käytettävän vokaalin mukaisesti
+     * 
+     * @return a tai ä
+     */
+    
     
     public String harmoninenA() {
         if (this.vokaali().equals(Vokaali.ETU)) {
@@ -108,6 +143,11 @@ public abstract class Taipuva {
         }
     }
     
+    /**
+     * Tutkii minkä vokaaliharmonian mukainen sana on
+     *  
+     * @return etu-, taka- tai neutraalivokaali
+     */
     
      public Vokaali vokaali() {
         for (int i = this.lekseemi.length() - 1; i >= 0; i--) {

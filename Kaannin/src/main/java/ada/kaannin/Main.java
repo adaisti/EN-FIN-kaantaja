@@ -5,6 +5,10 @@
  */
 package ada.kaannin;
 
+import ada.kaannin.englanti.Lauseke;
+import ada.kaannin.englanti.Sanakirja;
+import ada.kaannin.englanti.Sanaluokka;
+import ada.kaannin.englanti.SyntaksiSanakirja;
 import ada.kaannin.suomi.*;
 
 /**
@@ -14,20 +18,21 @@ import ada.kaannin.suomi.*;
 public class Main {
     public static void main(String[] args) {
         
-//        Substantiivi sana = new Substantiivi("kukka", NomininLuku.MONIKKO, Sijamuoto.PARTITIIVI, true);
-//        System.out.println(sana.sananmuoto());
-//        
-//        Pronomini toinen = new Pronomini("minä", NomininLuku.MONIKKO, Sijamuoto.ADESSIIVI, false);
-//        
-//        System.out.println(toinen.sananmuoto());
-//        
-//        
-//        Adjektiivi kolmas = new Adjektiivi("nopea", NomininLuku.YKSIKKO, Sijamuoto.GENETIIVI, false, Vertailumuoto.KOMPARATIIVI);
-//        
-//        System.out.println(kolmas.sananmuoto());
+        Sanakirja s = new Sanakirja();
+        SyntaksiSanakirja ss = new SyntaksiSanakirja();
         
-        Partikkeli sana = new Partikkeli("iloisesti", Vertailumuoto.KOMPARATIIVI);
-        System.out.println(sana.sananmuoto());
+        s.lisaaKaannos("holder", "apupuikko", Sanaluokka.SUBSTANTIIVI);
         
+        String mahdollinenLekseemi = "holders";
+        
+        if (mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - 1) == 's') {
+            System.out.println("loppuu s:ään");
+            mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
+            System.out.println(mahdollinenLekseemi);
+            if (s.sisaltaaSanan(mahdollinenLekseemi) && s.onSubstantiivi(mahdollinenLekseemi)) {
+                System.out.println("oli monikko");
+            }
+            System.out.println("ei ollut monikko");
+        }
     }
 }
