@@ -54,6 +54,7 @@ public class Lauseke {
         } else if (voiOllaVerbi(mahdollinenLekseemi)) {
             if (etsiVerbipaate(mahdollinenLekseemi) != null) {
                 // lisaa verbipaate johonkin fiksuun kohtaan
+                // sinne minne tulee syntaksihakuun syötettävää infoa
                 return true;
             }
         }

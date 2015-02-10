@@ -37,14 +37,6 @@ public class Sanakirja {
     public HashMap<String, Sanaluokka> haeKaannos(String englanti) {
         if (this.kaannokset.containsKey(englanti)) {
             return this.kaannokset.get(englanti);
-            // voidaan parannella myöhemmin jotenkin seuraavasti
-            // ehkä ==1 aiheuttaa jänniä virheitä
-//            if (this.kaannokset.keySet().size() == 1) {
-//                return this.kaannokset.get(englanti);
-//            }
-//            else {
-//                return this.parempiKaannos(englanti);
-//            }
         }
         
         HashMap eiKaannosta = new HashMap<>();
@@ -56,7 +48,8 @@ public class Sanakirja {
         ArrayList<Sanaluokka> tamanSanaluokat = new ArrayList<>();
         
         if (this.haeKaannos(englanti).keySet() == null) {
-            return null;
+            tamanSanaluokat.add(Sanaluokka.EISANALUOKKAA);
+            return tamanSanaluokat;
         }
         
         for (String suomi : this.haeKaannos(englanti).keySet()) {
@@ -65,69 +58,62 @@ public class Sanakirja {
         return tamanSanaluokat;
     }
     
-    public HashMap parempiKaannos(String englanti) {
-        // tässä hyödynnetään predikaattitietoutta
-        // ja tutkitaan kumpi kahdesta käännöksestä on parempi
-        return null;
-    }
-    
     public boolean onSubstantiivi(String englanti) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(englanti)) {
             if (luokka.equals(Sanaluokka.SUBSTANTIIVI)) {
                 return true;
             }
         }
-        // huomaa if-ehdon muoto, vrt onVerbi
         return false;
     }
     
     public boolean onPronomini(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
-            if (!luokka.equals(Sanaluokka.PRONOMINI)) {
-                return false;
+            if (luokka.equals(Sanaluokka.PRONOMINI)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     public boolean onAdjektiivi(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
-            if (!luokka.equals(Sanaluokka.ADJEKTIIVI)) {
-                return false;
+            if (luokka.equals(Sanaluokka.ADJEKTIIVI)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     public boolean onNumeraali(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
-            if (!luokka.equals(Sanaluokka.NUMERAALI)) {
-                return false;
+            if (luokka.equals(Sanaluokka.NUMERAALI)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     public boolean onPartikkeli(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
             if (!luokka.equals(Sanaluokka.PARTIKKELI)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     public boolean onVerbi(String sana) {
+        final ArrayList<Sanaluokka> haeKaannoksenSanaluokka = this.haeKaannoksenSanaluokka(sana);
         
-        if (this.haeKaannoksenSanaluokka(sana) == null || this.haeKaannoksenSanaluokka(sana).isEmpty()) {
+        // en ole varma onko tästä mitään iloa mutta olkoon nyt toistaiseksi siinä
+        if (haeKaannoksenSanaluokka == null || haeKaannoksenSanaluokka.isEmpty()) {
             return false;
         }
-        
-        
-        // tässä forin sisäinen if-ehto on eri päin kuin muissa sanaluokissa
-        // on mietittävä miksi heittää nullpointerexceptionin jos toisin päin
-        // ja mitä sille voi tehdä
-        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
+       
+        // huomaa if-ehdon ja boolean-palautuksen suunta
+        System.out.println(haeKaannoksenSanaluokka);
+        for (Sanaluokka luokka : haeKaannoksenSanaluokka) {
             if (luokka.equals(Sanaluokka.VERBI)) {
                 return true;
             }

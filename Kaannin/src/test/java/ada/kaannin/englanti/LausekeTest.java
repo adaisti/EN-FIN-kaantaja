@@ -64,12 +64,23 @@ public class LausekeTest {
 
 
     @Test
-    public void testOnVerbimuoto() {
-        
+    public void testOnVerbimuotoTunnistaaVerbin() {
+        assertEquals(true, verbilauseke.onVerbimuoto("increases"));
+    }
+    
+    @Test
+    public void testOnVerbimuotoHuomaaEtteiOleVerbi() {
+        assertEquals(false, verbilauseke.onVerbimuoto("holders"));
     }
 
     @Test
-    public void testVoiOllaVerbi() {
+    public void testVoiOllaVerbiTunnistaaMahdollisenVerbin() {
+        assertEquals(true, verbilauseke.voiOllaVerbi("knitting"));
+    }
+    
+    @Test
+    public void testVoiOllaVerbiTunnistaaMahdottomanVerbin() {
+        assertEquals(false, verbilauseke.voiOllaVerbi("needles"));
     }
 
     @Test
