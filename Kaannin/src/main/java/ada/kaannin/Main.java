@@ -9,6 +9,7 @@ import ada.kaannin.englanti.Lauseke;
 import ada.kaannin.englanti.Sanakirja;
 import ada.kaannin.englanti.Sanaluokka;
 import ada.kaannin.englanti.SyntaksiSanakirja;
+import ada.kaannin.kayttoliittyma.Kayttoliittyma;
 import ada.kaannin.suomi.*;
 
 /**
@@ -18,21 +19,8 @@ import ada.kaannin.suomi.*;
 public class Main {
     public static void main(String[] args) {
         
-        Sanakirja s = new Sanakirja();
-        SyntaksiSanakirja ss = new SyntaksiSanakirja();
+       Kayttoliittyma kl = new Kayttoliittyma();
+       kl.run();
         
-        s.lisaaKaannos("holder", "apupuikko", Sanaluokka.SUBSTANTIIVI);
-        
-        String mahdollinenLekseemi = "holders";
-        
-        if (mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - 1) == 's') {
-            System.out.println("loppuu s:ään");
-            mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
-            System.out.println(mahdollinenLekseemi);
-            if (s.sisaltaaSanan(mahdollinenLekseemi) && s.onSubstantiivi(mahdollinenLekseemi)) {
-                System.out.println("oli monikko");
-            }
-            System.out.println("ei ollut monikko");
-        }
     }
 }

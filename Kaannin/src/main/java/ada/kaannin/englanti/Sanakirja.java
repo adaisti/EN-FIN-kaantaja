@@ -106,13 +106,13 @@ public class Sanakirja {
     public boolean onVerbi(String sana) {
         final ArrayList<Sanaluokka> haeKaannoksenSanaluokka = this.haeKaannoksenSanaluokka(sana);
         
+//        System.out.println(haeKaannoksenSanaluokka);
         // en ole varma onko tästä mitään iloa mutta olkoon nyt toistaiseksi siinä
-        if (haeKaannoksenSanaluokka == null || haeKaannoksenSanaluokka.isEmpty()) {
+        if (haeKaannoksenSanaluokka == null || haeKaannoksenSanaluokka.isEmpty() || haeKaannoksenSanaluokka.contains(null)) {
             return false;
         }
        
         // huomaa if-ehdon ja boolean-palautuksen suunta
-        System.out.println(haeKaannoksenSanaluokka);
         for (Sanaluokka luokka : haeKaannoksenSanaluokka) {
             if (luokka.equals(Sanaluokka.VERBI)) {
                 return true;
