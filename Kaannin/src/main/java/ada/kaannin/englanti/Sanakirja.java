@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 /**
  *
+ * Luokka etsii tunnettuja sanoja ja tietää lisäksi niiden suomenkieliset vastineet
+ * ja sanaluokat
+ * 
  * @author adahyvarinen
  */
 public class Sanakirja {
@@ -22,6 +25,13 @@ public class Sanakirja {
         this.suomenSanat= new HashMap<String, Sanaluokka>();
     }
     
+    /**
+     * Tutkii onko sana sanakirjassa
+     * 
+     * @param englanti
+     * @return true jos sana on sanakirjassa
+     */
+    
     public boolean sisaltaaSanan(String englanti) {
         if (this.kaannokset.containsKey(englanti)) {
             return true;
@@ -29,10 +39,26 @@ public class Sanakirja {
         return false;
     }
     
+    /**
+     * Lisää käännöksen sanakirjaan
+     * 
+     * @param englanti
+     * @param suomi
+     * @param sanaluokka 
+     */
+    
     public void lisaaKaannos(String englanti, String suomi, Sanaluokka sanaluokka) {
         this.suomenSanat.put(suomi, sanaluokka);
         this.kaannokset.put(englanti, suomenSanat);
     }
+    
+    /**
+     * Etsii sanakirjassa olevan sanan käännöksen
+     * 
+     * 
+     * @param englanti
+     * @return HashMap, jossa on suomen sana ja sanaluokka, tai englannin sana isoilla kirjaimilla
+     */
     
     public HashMap<String, Sanaluokka> haeKaannos(String englanti) {
         if (this.kaannokset.containsKey(englanti)) {
@@ -43,6 +69,13 @@ public class Sanakirja {
         eiKaannosta.put(englanti.toUpperCase(), Sanaluokka.EISANALUOKKAA);
         return eiKaannosta;
     }
+    
+    /**
+     * etsii sanaluokan englanninkieliselle sanalle
+     * 
+     * @param englanti
+     * @return Sanaluokka
+     */
     
     public ArrayList<Sanaluokka> haeKaannoksenSanaluokka(String englanti) {
         ArrayList<Sanaluokka> tamanSanaluokat = new ArrayList<>();
@@ -58,6 +91,13 @@ public class Sanakirja {
         return tamanSanaluokat;
     }
     
+    /**
+     * Metodi kertoo onko joku englannin sana substantiivi
+     * 
+     * @param englanti
+     * @return true, jos sana on Substantiivi
+     */
+    
     public boolean onSubstantiivi(String englanti) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(englanti)) {
             if (luokka.equals(Sanaluokka.SUBSTANTIIVI)) {
@@ -66,6 +106,13 @@ public class Sanakirja {
         }
         return false;
     }
+    
+    /**
+     * Metodi kertoo onko joku englannin sana pronomini
+     * 
+     * @param englanti
+     * @return true, jos sana on pronomini
+     */
     
     public boolean onPronomini(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
@@ -76,6 +123,13 @@ public class Sanakirja {
         return false;
     }
     
+    /**
+     * Metodi kertoo onko joku englannin sana adjektiivi
+     * 
+     * @param englanti
+     * @return true, jos sana on adjektiivi
+     */
+    
     public boolean onAdjektiivi(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
             if (luokka.equals(Sanaluokka.ADJEKTIIVI)) {
@@ -84,6 +138,13 @@ public class Sanakirja {
         }
         return false;
     }
+    
+    /**
+     * Metodi kertoo onko joku englannin sana numeraali
+     * 
+     * @param englanti
+     * @return true, jos sana on numeraali
+     */
     
     public boolean onNumeraali(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
@@ -94,6 +155,13 @@ public class Sanakirja {
         return false;
     }
     
+    /**
+     * Metodi kertoo onko joku englannin sana partikkeli
+     * 
+     * @param englanti
+     * @return true, jos sana on partikkeli
+     */
+    
     public boolean onPartikkeli(String sana) {
         for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
             if (!luokka.equals(Sanaluokka.PARTIKKELI)) {
@@ -102,6 +170,13 @@ public class Sanakirja {
         }
         return false;
     }
+    
+    /**
+     * Metodi kertoo onko joku englannin sana verbi
+     * 
+     * @param englanti
+     * @return true, jos sana on verbi
+     */
     
     public boolean onVerbi(String sana) {
         final ArrayList<Sanaluokka> haeKaannoksenSanaluokka = this.haeKaannoksenSanaluokka(sana);

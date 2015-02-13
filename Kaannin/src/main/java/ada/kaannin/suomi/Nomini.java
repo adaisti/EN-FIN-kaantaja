@@ -36,6 +36,10 @@ public abstract class Nomini extends Taipuva {
         this.sijamuoto = sijamuoto;
     }
     
+    /**
+     * asettaa sanan oikeaan sijamuotoon ja palauttaa sen
+     * @return taivutettu sana
+     */
     
     public String sananmuoto() {
         this.asetaSijamuoto();
@@ -120,24 +124,44 @@ public abstract class Nomini extends Taipuva {
     }
    
     
+    /**
+     * Asettaa sanan yksikön genetiiviin
+     */
+    
     public void yksikonGenetiivi() {
         super.heikkoAste();
         this.sananmuoto += "n";
     }
     
+    /**
+     * Asettaa sanan yksikön partitiiviin
+     */
+    
     public void yksikonPartitiivi() {
         this.sananmuoto += super.harmoninenA();
     }
+    
+    /**
+     * Asettaa sanan yksikön essiiviin
+     */
     
     public void yksikonEssiivi() {
         this.sananmuoto += "n";
         this.sananmuoto += super.harmoninenA();
     }
     
+    /**
+     * Asettaa sanan yksikön translatiiviin
+     */
+    
     public void yksikonTranslatiivi() {
         super.heikkoAste();
         this.sananmuoto += "ksi";
     }
+    
+    /**
+     * Asettaa sanan yksikön inessiiviin
+     */
     
     public void yksikonInessiivi() {
         super.heikkoAste();
@@ -145,11 +169,19 @@ public abstract class Nomini extends Taipuva {
         this.sananmuoto += super.harmoninenA();
     }
     
+    /**
+     * Asettaa sanan yksikön elaiiviin
+     */
+    
     public void yksikonElatiivi() {
         super.heikkoAste();
         this.sananmuoto += "st";
         this.sananmuoto += super.harmoninenA();
     }
+    
+    /**
+     * Asettaa sanan yksikön illatiiviin
+     */
     
     public void yksikonIllatiivi() {
         String vikaKirjain = Character.toString(this.sananmuoto.charAt(this.sananmuoto.length() - 1));
@@ -163,11 +195,19 @@ public abstract class Nomini extends Taipuva {
         this.sananmuoto += "n";
     }
     
+    /**
+     * Asettaa sanan yksikön adessiiviin
+     */
+    
     public void yksikonAdessiivi() {
         super.heikkoAste();
         this.sananmuoto += "ll";
         this.sananmuoto += super.harmoninenA();
     }
+    
+    /**
+     * Asettaa sanan yksikön ablatiiviin
+     */
     
     public void yksikonAblatiivi() {
         super.heikkoAste();
@@ -175,34 +215,62 @@ public abstract class Nomini extends Taipuva {
         this.sananmuoto += super.harmoninenA();
     }
     
+    /**
+     * Asettaa sanan yksikön allatiiviin
+     */
+    
     public void yksikonAllatiivi() {
         super.heikkoAste();
         this.sananmuoto += "lle";
     }
+    
+    /**
+     * Asettaa sanan monikon nominatiiviin
+     */
     
     public void monikonNominatiivi() {
         super.heikkoAste();
         this.sananmuoto += "t";
     }
     
+    /**
+     * Asettaa sanan monikon genetiiviin
+     */
+    
     public void monikonGenetiivi() {
         this.sananmuoto += "jen";
     }
+    
+    /**
+     * Asettaa sanan monikon partitiiviin
+     */
     
     public void monikonPartitiivi() {
         this.sananmuoto += "j";
         this.sananmuoto += super.harmoninenA();
     }
     
+    /**
+     * Asettaa sanan monikon essiiviin
+     */
+    
     public void monikonEssiivi() {
         this.sananmuoto += "in";
         this.sananmuoto += super.harmoninenA();
     }
     
+    /**
+     * Asettaa sanan monikon translatiiviin
+     */
+    
     public void monikonTranslatiivi() {
         super.heikkoAste();
         this.sananmuoto += "iksi";
     }
+    
+    /**
+     * Asettaa sanan monikon inessiiviin
+     */
     
     public void monikonInessiivi() {
         super.heikkoAste();
@@ -210,21 +278,37 @@ public abstract class Nomini extends Taipuva {
         this.sananmuoto += super.harmoninenA();
     }
     
+    /**
+     * Asettaa sanan monikon elatiiviin
+     */
+    
     public void monikonElatiivi() {
         super.heikkoAste();
         this.sananmuoto += "ist";
         this.sananmuoto += super.harmoninenA();
     }
     
+    /**
+     * Asettaa sanan monikon illatiiviin
+     */
+    
     public void monikonIllatiivi() {
         this.sananmuoto += "ihin";
     }
+    
+    /**
+     * Asettaa sanan monikon adessiiviin
+     */
     
     public void monikonAdessiivi() {
         super.heikkoAste();
         this.sananmuoto += "ill";
         this.sananmuoto += super.harmoninenA();
     }
+    
+    /**
+     * Asettaa sanan monikon ablatiiviin
+     */
     
     public void monikonAblatiivi() {
         super.heikkoAste();
@@ -237,6 +321,10 @@ public abstract class Nomini extends Taipuva {
 
         this.sananmuoto += super.harmoninenA();
     }
+    
+    /**
+     * Asettaa sanan monikon allatiiviin
+     */
     
     public void monikonAllatiivi() {
         super.heikkoAste();

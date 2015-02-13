@@ -27,10 +27,19 @@ public class Verbi extends Taipuva {
         this.aikamuoto = aikamuoto;
     }
     
+    /**
+     * Asettaa sanan oikeaan muotoon
+     * @return taivutettu sana
+     */
+    
     public String sananmuoto() {
         this.asetaModus();
         return this.sananmuoto;
     }
+    
+    /**
+     * Asettaa verbin oikeaan modukseen sekä niiden mukaan persoonaan
+     */
     
     public void asetaModus() {
         
@@ -47,24 +56,43 @@ public class Verbi extends Taipuva {
         }
     }
     
+    /**
+     * Asettaa verbin indikatiiviin
+     */
+    
     public void indikatiivi() {
         this.asetaPersoona();
     }
+    
+    /**
+     * Asettaa verbin konditionaaliin
+     */
     
     public void konditionaali() {
         this.sananmuoto += "isi";
         this.asetaPersoona();
     }
     
+    /**
+     * Asettaa verbin potentiaaliin
+     */
+    
     public void potentiaali() {
         this.sananmuoto += "ne";
         this.asetaPersoona();
     }
     
+    /**
+     * Asettaa verbin imperatiiviin
+     */
+    
     public void imperatiivi() {
         this.asetaImperatiivinPersoona();
     }
     
+    /**
+     * Asettaa imperatiivimuotoiselle verbille persoonan
+     */
     
     public void asetaImperatiivinPersoona() {
         
@@ -74,6 +102,10 @@ public class Verbi extends Taipuva {
             this.sananmuoto += "kaa";
         }
     }
+    
+    /**
+     * Asettaa säännönmukaisen persoonan
+     */
     
     public void asetaPersoona() {
         if (this.persoona.equals(Persoona.YKS1)) {
@@ -93,15 +125,27 @@ public class Verbi extends Taipuva {
         }
     }
     
+    /**
+     * Asettaa yksikön 1. persoonan
+     */
+    
     public void yks1Pers() {
         super.heikkoAste();
         this.sananmuoto += "n";
     }
     
+    /**
+     * Asettaa yksikön 2. persoonan
+     */
+    
     public void yks2Pers() {
         super.heikkoAste();
         this.sananmuoto += "t";
     }
+    
+    /**
+     * Asettaa yksikön 3. persoonan
+     */
     
     public void yks3Pers() {
         if (this.modus.equals(Modus.INDIKATIIVI)) {
@@ -109,19 +153,35 @@ public class Verbi extends Taipuva {
         }
     }
     
+    /**
+     * Asettaa monikon 1. persoonan
+     */
+    
     public void mon1Pers() {
         super.heikkoAste();
         this.sananmuoto += "mme";
     }
+    
+    /**
+     * Asettaa monikon 2. persoonan
+     */
     
     public void mon2Pers() {
         super.heikkoAste();
         this.sananmuoto += "tte";
     }
     
+    /**
+     * Asettaa monikon 3. persoonan
+     */
+    
     public void mon3Pers() {
         this.sananmuoto += "vat";
     }
+    
+    /**
+     * Asettaa passiivin
+     */
     
     public void passiivi() {
         super.heikkoAste();

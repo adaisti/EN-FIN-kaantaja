@@ -7,6 +7,8 @@ package ada.kaannin.englanti;
 
 /**
  *
+ * Sanaluokkien enumerointi
+ * 
  * @author adahyvarinen
  */
 public enum Sanaluokka {

@@ -7,6 +7,9 @@ package ada.kaannin.englanti;
 
 /**
  *
+ * Luokka operoi lausekkeita, eli yksiköitä, joissa voi olla useita sanoja, mutta
+ * joissa sanat muodostavat kieliopillisesti kiinteän ja yhtenäisen kokonaisuuden
+ * 
  * @author adahyvarinen
  */
 public class Lauseke {
@@ -23,10 +26,20 @@ public class Lauseke {
         this.ss = ss;
     }
     
+    /**
+     * Jaetaan lausekkeen teksti sanoiksi
+     * 
+     * @return välilyönnein erotellut sanat
+     */
+    
     public String[] jaaSanoiksi() {
         String[] osat = this.teksti.split(" ");
         return osat;
     }
+    
+    /**
+     * Tutkii, mikä sanoista on lekseemi, eli lausekkeen pohja, johon muut sanat viittaavat
+     */
     
     public void asetaLekseemi() {
         String mahdollinenLekseemi = this.jaaSanoiksi()[this.jaaSanoiksi().length - 1];
@@ -38,6 +51,13 @@ public class Lauseke {
         this.lekseemi = mahdollinenLekseemi;
     }
     
+    /**
+     * Tutkii, onko jokin sana monikossa, esim "holders"
+     * 
+     * @param mahdollinenLekseemi
+     * @return true, jos sana on monikkomuoto
+     */
+    
     public boolean onMonikko(String mahdollinenLekseemi) {
         if (mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - 1) == 's') {
             mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
@@ -47,6 +67,13 @@ public class Lauseke {
         }
         return false;
     }
+    
+    /**
+     * Tutkii, onko jokin sana verbimuoto, esim "knits"
+     * 
+     * @param mahdollinenLekseemi
+     * @return 
+     */
     
     public boolean onVerbimuoto(String mahdollinenLekseemi) {
         if (s.onVerbi(mahdollinenLekseemi)) {
@@ -61,6 +88,13 @@ public class Lauseke {
         return false;
     }
     
+    /**
+     * Tutkii, voiko joku sana olla verbi
+     * 
+     * @param mahdollinenLekseemi
+     * @return true, jos sanaan sisältyy joku verbinä sanakirjaan tallennettu yksikkö
+     */
+    
     public boolean voiOllaVerbi(String mahdollinenLekseemi) {
         for (int i = 0; i <= mahdollinenLekseemi.length(); i++) {
             if (s.onVerbi(mahdollinenLekseemi.substring(0, i))) {
@@ -69,6 +103,13 @@ public class Lauseke {
         }
         return false;
     }
+    
+    /**
+     * Tutkii, mikä osuus sanasta on verbipääte
+     * 
+     * @param mahdollinenLekseemi
+     * @return verbipääte
+     */
     
     public String etsiVerbipaate(String mahdollinenLekseemi) {
         for (String paate : ss.verbipaatteet().keySet()) {

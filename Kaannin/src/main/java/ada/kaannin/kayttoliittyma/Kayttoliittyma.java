@@ -7,6 +7,8 @@ package ada.kaannin.kayttoliittyma;
 
 /**
  *
+ * Graafinen käyttöliittymä
+ * 
  * @author adahyvarinen
  */
 import java.awt.Container;
@@ -20,8 +22,10 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
+    private Teksti lukija;
 
-    public Kayttoliittyma() {
+    public Kayttoliittyma(Teksti lukija) {
+        this.lukija = lukija;
     }
 
     @Override
@@ -37,6 +41,12 @@ public class Kayttoliittyma implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     * luo käyttöliittymän kompomentit
+     * 
+     * @param container 
+     */
+    
     private void luoKomponentit(Container container) {
         GridLayout layout = new GridLayout(3, 1);
         container.setLayout(layout);
@@ -48,7 +58,7 @@ public class Kayttoliittyma implements Runnable {
         textAreaVasen.setLineWrap(true);
         textAreaOikea.setLineWrap(true);
         
-        Tapahtumankuuntelija kuuntelija = new Tapahtumankuuntelija(textAreaVasen, textAreaOikea);
+        Tapahtumankuuntelija kuuntelija = new Tapahtumankuuntelija(lukija, textAreaVasen, textAreaOikea);
         kaannaNappi.addActionListener(kuuntelija);
 
 

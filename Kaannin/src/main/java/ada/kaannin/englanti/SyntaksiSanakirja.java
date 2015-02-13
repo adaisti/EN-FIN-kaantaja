@@ -14,6 +14,8 @@ import java.util.Set;
 
 /**
  *
+ * Sanakirja, josta haetaan syntaktisia tietoja
+ * 
  * @author adahyvarinen
  */
 public class SyntaksiSanakirja {
@@ -30,12 +32,18 @@ public class SyntaksiSanakirja {
         this.verbipaatteet = new HashMap<String, Persoona>();
     }
     
+    /**
+     * Alustaa kaikki muuttujat
+     */
+    
     public void alustaKaikki() {
         alustaPrepositiotMappi();
         alustaNumerotMappi();
         alustaArtikkelitSetti();
         alustaVerbipaatteetMappi();
     }
+    
+    
     
     public void alustaPrepositiotMappi() {
         // tänne tulee lista kaikista prepositiosta ja mikä Sijamuoto niihin liittyy
@@ -53,6 +61,10 @@ public class SyntaksiSanakirja {
         // hmm jotain täytyy tehdä tolle Persoona-osiolle koska
         // se ei ole aina oleellinen
     }
+    
+    /**
+     * asettaa artikkelit "the", "a" ja "an" artikkeleiksi
+     */
     
     public void alustaArtikkelitSetti() {
         String[] artikkelitTaulukko = {"the", "a", "an"};

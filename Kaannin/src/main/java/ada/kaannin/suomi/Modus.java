@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Modusten enumerointi
+ * 
  * @author adahyvarinen
  */
 public enum Modus {

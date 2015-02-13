@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Aikamuotojen enumerointi
+ * 
  * @author adahyvarinen
  */
 public enum Aikamuoto {

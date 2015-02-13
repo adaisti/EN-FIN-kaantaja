@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Kokoaa kaikkien taipuvien sanojen yhteiset ominaisuudet, kuten astevaihtelun ja vokaaliharmonian
+ * 
  * @author adahyvarinen
  */
 public abstract class Taipuva {

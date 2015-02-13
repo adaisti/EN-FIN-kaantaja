@@ -7,6 +7,8 @@ package ada.kaannin.englanti;
 
 /**
  *
+ * Luokan tarkoituksena on kontrolloida sanakirjoja ja muuta hakemistoa
+ * 
  * @author adahyvarinen
  */
 public class Hakemistonhallinta {

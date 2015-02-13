@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Verbien persoonien enumerointi
+ * 
  * @author adahyvarinen
  */
 public enum Persoona {

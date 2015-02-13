@@ -40,6 +40,10 @@ public class Pronomini extends Nomini {
         } 
     }
     
+    /**
+     * Alustaa monikkojen ja yksikkojen Mapin
+     */
+    
     public void alustaMap() {
         String[] yksi = {"minä", "sinä", "hän", "tämä", "tuo", "se"};
         String[] moni = {"me", "te", "he", "nämä", "nuo", "ne"};

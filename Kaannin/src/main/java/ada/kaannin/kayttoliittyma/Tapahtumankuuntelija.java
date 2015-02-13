@@ -7,6 +7,8 @@ package ada.kaannin.kayttoliittyma;
 
 /**
  *
+ * Kuuntelee käyttäjän toimintaa
+ * 
  * @author adahyvarinen
  */
 import java.awt.event.ActionEvent;
@@ -17,17 +19,19 @@ public class Tapahtumankuuntelija implements ActionListener {
 
     private JTextArea lahde;
     private JTextArea kohde;
+    private Teksti lukija;
 
-    public Tapahtumankuuntelija(JTextArea lahde, JTextArea kohde) {
+    public Tapahtumankuuntelija(Teksti lukija, JTextArea lahde, JTextArea kohde) {
         this.lahde = lahde;
         this.kohde = kohde;
+        this.lukija = lukija;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         this.kohde.setText(this.lahde.getText());
         // tällä hetkellä vain kopioi tekstin
-        // pitää muuttaa niin että käännetään lande.getText();
+        // pitää muuttaa niin että käännetään lahde.getText();
     }
 }
 

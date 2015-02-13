@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ada.kaannin.suomi;
+package ada.kaannin.kayttoliittyma;
 
 /**
  *
- * Nominin luvun enumerointi
+ * Käsittelee ohjelmalle annettua tekstiä ja jakaa sen lauseiksi
  * 
  * @author adahyvarinen
  */
-public enum NomininLuku {
-    YKSIKKO, MONIKKO;
+public class Teksti {
+    
 }

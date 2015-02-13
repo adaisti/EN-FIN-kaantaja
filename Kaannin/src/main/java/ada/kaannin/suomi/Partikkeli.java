@@ -32,6 +32,11 @@ public class Partikkeli implements VertailumuodoissaTaipuva {
         this.sananmuoto = lekseemi;
     }
     
+    /**
+     * jos sana taipuu vertailumuodoissa, asettaa oikein muodon, muuten ei aseta mitään
+     * @return taivutettu tai taipumaton sana
+     */
+    
     public String sananmuoto() {
         
         if (!this.muoto.equals(Vertailumuoto.POSITIIVI)) {

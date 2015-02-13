@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 /**
  *
+ * Luokka palauttaa nomineille ominaisia syntaktisia ilmentymiä hakujen perusteella
+ * 
  * @author adahyvarinen
  */
 public class NomininSyntaksihaku {
@@ -32,8 +34,11 @@ public class NomininSyntaksihaku {
     }
     
     
-    // WTF täytyy tehdä tälle luokalle jotain
-    
+    /**
+     * Etsii nominiin liittyvän sijamuodon muiden lausekkeen sanojen perusteella
+     * 
+     * @return Sijamuoto
+     */
 
     public Sijamuoto sijamuoto() {
         
@@ -46,10 +51,18 @@ public class NomininSyntaksihaku {
         return this.sijamuoto;
     }
     
+    /**
+     * etsii prepositioon liittyvän sijamuodon
+     */
+    
     public void haePrepositiolla() {
         this.sijamuoto = this.prepositiot.get(this.prepositio);
     }
     
+    /**
+     * etsii lukusanaan liittyvän sijamuodon
+     * 
+     */
     public void haeNumerolla() {
         
         if (onPrepositiolauseke()) {
@@ -64,7 +77,11 @@ public class NomininSyntaksihaku {
         this.luku = NomininLuku.YKSIKKO;
     }
     
-    
+    /**
+     * tutkii onko jokin lauseke prepositiolauseke
+     * 
+     * @return true jos on prepositiolauseke
+     */
     
     public boolean onPrepositiolauseke() {
         

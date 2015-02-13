@@ -8,7 +8,10 @@ package ada.kaannin.englanti;
 import java.util.ArrayList;
 
 /**
- *
+ * Luokka jakaa annetun lauseen lausekkeiksi
+ * ja huolehtii siitä, että lauseita aletaan käsitellä
+ * 
+ * 
  * @author adahyvarinen
  */
 public class Lause {
@@ -56,6 +59,13 @@ public class Lause {
         return this.lausekkeet;
     }
     
+    /**
+     * 
+     * Metodi erottaa välilyönnein erotellut sanat
+     * 
+     * @return lauseen sanat
+     */
+    
     public String[] jaaSanoiksi() {
         String[] osat = this.teksti.split(" ");
         return osat;
@@ -76,6 +86,12 @@ public class Lause {
         return true;
     }
     
+    /**
+     * Metodi tutkii, onko sana prepositio
+     * 
+     * @param sana
+     * @return true, jos sana on prepositio
+     */
     
     public boolean onPrepositio(String sana) {
         if (ss.prepositiot().keySet().contains(sana)) {
@@ -84,12 +100,26 @@ public class Lause {
         return false;
     }
     
+    /**
+     * Metodi tutkii, onko sana numero
+     * 
+     * @param sana
+     * @return true, jos sana on numero
+     */
+    
     public boolean onNumero(String sana) {
         if (ss.numerot().keySet().contains(sana)){
             return true;
         }
         return false;
     }
+    
+    /**
+     * Metodi tutkii, onko sana artikkeli
+     * 
+     * @param sana
+     * @return true, jos sana on artikkeli
+     */
     
     public boolean onArtikkeli(String sana) {
         if (ss.artikkelit().contains(sana)) {

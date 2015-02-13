@@ -10,6 +10,7 @@ import ada.kaannin.englanti.Sanakirja;
 import ada.kaannin.englanti.Sanaluokka;
 import ada.kaannin.englanti.SyntaksiSanakirja;
 import ada.kaannin.kayttoliittyma.Kayttoliittyma;
+import ada.kaannin.kayttoliittyma.Teksti;
 import ada.kaannin.suomi.*;
 
 /**
@@ -19,7 +20,9 @@ import ada.kaannin.suomi.*;
 public class Main {
     public static void main(String[] args) {
         
-       Kayttoliittyma kl = new Kayttoliittyma();
+        Teksti lukija = new Teksti();
+        
+       Kayttoliittyma kl = new Kayttoliittyma(lukija);
        kl.run();
         
     }

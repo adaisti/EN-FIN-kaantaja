@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Adjektiiveille ja partikkeleille yhteinen rajapinta
+ * 
  * @author adahyvarinen
  */
 public interface VertailumuodoissaTaipuva {

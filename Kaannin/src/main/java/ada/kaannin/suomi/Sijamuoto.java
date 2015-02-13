@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Sijamuotojen enumerointi
+ * 
  * @author adahyvarinen
  */
 public enum Sijamuoto {

@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Vertailumuotojen enumerointi
+ * 
  * @author adahyvarinen
  */
 public enum Vertailumuoto {

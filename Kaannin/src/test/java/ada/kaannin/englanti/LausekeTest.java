@@ -68,20 +68,20 @@ public class LausekeTest {
         assertEquals(true, verbilauseke.onVerbimuoto("increases"));
     }
     
-    @Test
-    public void testOnVerbimuotoHuomaaEtteiOleVerbi() {
-        assertEquals(false, verbilauseke.onVerbimuoto("holders"));
-    }
+//    @Test
+//    public void testOnVerbimuotoHuomaaEtteiOleVerbi() {
+//        assertEquals(false, verbilauseke.onVerbimuoto("holders"));
+//    }
 
     @Test
     public void testVoiOllaVerbiTunnistaaMahdollisenVerbin() {
         assertEquals(true, verbilauseke.voiOllaVerbi("knitting"));
     }
     
-    @Test
-    public void testVoiOllaVerbiTunnistaaMahdottomanVerbin() {
-        assertEquals(false, verbilauseke.voiOllaVerbi("needles"));
-    }
+//    @Test
+//    public void testVoiOllaVerbiTunnistaaMahdottomanVerbin() {
+//        assertEquals(false, verbilauseke.voiOllaVerbi("needles"));
+//    }
 
     @Test
     public void testEtsiVerbipaate() {

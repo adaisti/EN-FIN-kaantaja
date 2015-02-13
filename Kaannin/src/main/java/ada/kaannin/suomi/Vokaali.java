@@ -7,6 +7,8 @@ package ada.kaannin.suomi;
 
 /**
  *
+ * Vokaaliharmonian ilmaisun enumerointi
+ * 
  * @author adahyvarinen
  */
 public enum Vokaali {
