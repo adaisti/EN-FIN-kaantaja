@@ -27,24 +27,31 @@ public class LauseTest {
         ss = new SyntaksiSanakirja();
         s = new Sanakirja();
         
+        ss.alustaKaikki();
+        
         lause = new Lause(ss, s, "create 42 sts on two needles");
     }
 
     @Test
-    public void testJaaLausekkeiksi() {
+    public void testJaaLausekkeiksiRajaaOikeinLukusanan() {
+        lause.jaaLausekkeiksi();
+        assertEquals("create", lause.lausekkeet().get(0).toString());
     }
-
+    
     @Test
-    public void testLausekkeet() {
+    public void testJaaLausekkeiksiRajaaPreposition() {
+        lause.jaaLausekkeiksi();
+        assertEquals("42 sts", lause.lausekkeet().get(1).toString());
     }
 
     @Test
     public void testJaaSanoiksi() {
+        assertEquals("sts", lause.jaaSanoiksi()[2]);
     }
 
     @Test
     public void testOnLausekkeenLoppuHuomaaEtteiLopu() {
-        assertEquals(true, lause.onLausekkeenLoppu("the"));
+        assertEquals(false, lause.onLausekkeenLoppu("the"));
     }
     
     @Test
@@ -52,17 +59,33 @@ public class LauseTest {
         assertEquals(true, lause.onLausekkeenLoppu("needle"));
     }
     
-
     @Test
-    public void testOnPrepositio() {
-    }
-
-    @Test
-    public void testOnNumero() {
-    }
-
-    @Test
-    public void testOnArtikkeli() {
+    public void testOnPrepositioTunnistaaOikean() {
+        assertEquals(true, lause.onPrepositio("on"));
     }
     
+    @Test
+    public void testOnPrepositioTunnistaaVaaran() {
+        assertEquals(false, lause.onPrepositio("needle"));
+    }
+
+    @Test
+    public void testOnNumeroTunnistaaOikean() {
+        assertEquals(true, lause.onNumero("42"));
+    }
+
+    @Test
+    public void testOnNumeroTunnistaaVaaran() {
+        assertEquals(false, lause.onNumero("needle"));
+    }
+    
+    @Test
+    public void testOnArtikkeliTunnistaaOikean() {
+        assertEquals(true, lause.onArtikkeli("the"));
+    }
+    
+    @Test
+    public void testOnArtikkeliTunnistaaVaaran() {
+        assertEquals(false, lause.onArtikkeli("needle"));
+    }
 }

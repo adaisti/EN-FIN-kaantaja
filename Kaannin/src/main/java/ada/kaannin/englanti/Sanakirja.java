@@ -13,16 +13,16 @@ import java.util.ArrayList;
  * Luokka etsii tunnettuja sanoja ja tietää lisäksi niiden suomenkieliset vastineet
  * ja sanaluokat
  * 
+ * Tässä versiossa sanan käännös on yksikäsitteinen, vaikka oikeasti näin ei aina ole
+ * 
  * @author adahyvarinen
  */
 public class Sanakirja {
     
     private HashMap<String, HashMap> kaannokset;
-    private HashMap<String, Sanaluokka> suomenSanat;
 
     public Sanakirja() {
         this.kaannokset = new HashMap<String, HashMap>();
-        this.suomenSanat= new HashMap<String, Sanaluokka>();
     }
     
     /**
@@ -48,7 +48,8 @@ public class Sanakirja {
      */
     
     public void lisaaKaannos(String englanti, String suomi, Sanaluokka sanaluokka) {
-        this.suomenSanat.put(suomi, sanaluokka);
+        HashMap<String, Sanaluokka> suomenSanat = new HashMap<String, Sanaluokka>();
+        suomenSanat.put(suomi, sanaluokka);
         this.kaannokset.put(englanti, suomenSanat);
     }
     
@@ -78,15 +79,13 @@ public class Sanakirja {
      */
     
     public ArrayList<Sanaluokka> haeKaannoksenSanaluokka(String englanti) {
-        ArrayList<Sanaluokka> tamanSanaluokat = new ArrayList<>();
-        
-        if (this.haeKaannos(englanti).keySet() == null) {
+        ArrayList tamanSanaluokat = new ArrayList<Sanaluokka>();
+        if (!sisaltaaSanan(englanti)) {
             tamanSanaluokat.add(Sanaluokka.EISANALUOKKAA);
-            return tamanSanaluokat;
-        }
-        
-        for (String suomi : this.haeKaannos(englanti).keySet()) {
-            tamanSanaluokat.add(this.suomenSanat.get(suomi));
+        } else {
+            for (String suomi : this.haeKaannos(englanti).keySet()) {
+                tamanSanaluokat.add(this.kaannokset.get(englanti).get(suomi));
+            }
         }
         return tamanSanaluokat;
     }
@@ -114,8 +113,8 @@ public class Sanakirja {
      * @return true, jos sana on pronomini
      */
     
-    public boolean onPronomini(String sana) {
-        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
+    public boolean onPronomini(String englanti) {
+        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(englanti)) {
             if (luokka.equals(Sanaluokka.PRONOMINI)) {
                 return true;
             }
@@ -130,8 +129,8 @@ public class Sanakirja {
      * @return true, jos sana on adjektiivi
      */
     
-    public boolean onAdjektiivi(String sana) {
-        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
+    public boolean onAdjektiivi(String englanti) {
+        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(englanti)) {
             if (luokka.equals(Sanaluokka.ADJEKTIIVI)) {
                 return true;
             }
@@ -146,8 +145,8 @@ public class Sanakirja {
      * @return true, jos sana on numeraali
      */
     
-    public boolean onNumeraali(String sana) {
-        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
+    public boolean onNumeraali(String englanti) {
+        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(englanti)) {
             if (luokka.equals(Sanaluokka.NUMERAALI)) {
                 return true;
             }
@@ -162,9 +161,9 @@ public class Sanakirja {
      * @return true, jos sana on partikkeli
      */
     
-    public boolean onPartikkeli(String sana) {
-        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(sana)) {
-            if (!luokka.equals(Sanaluokka.PARTIKKELI)) {
+    public boolean onPartikkeli(String englanti) {
+        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(englanti)) {
+            if (luokka.equals(Sanaluokka.PARTIKKELI)) {
                 return true;
             }
         }
@@ -178,17 +177,9 @@ public class Sanakirja {
      * @return true, jos sana on verbi
      */
     
-    public boolean onVerbi(String sana) {
-        final ArrayList<Sanaluokka> haeKaannoksenSanaluokka = this.haeKaannoksenSanaluokka(sana);
+    public boolean onVerbi(String englanti) {
         
-//        System.out.println(haeKaannoksenSanaluokka);
-        // en ole varma onko tästä mitään iloa mutta olkoon nyt toistaiseksi siinä
-        if (haeKaannoksenSanaluokka == null || haeKaannoksenSanaluokka.isEmpty() || haeKaannoksenSanaluokka.contains(null)) {
-            return false;
-        }
-       
-        // huomaa if-ehdon ja boolean-palautuksen suunta
-        for (Sanaluokka luokka : haeKaannoksenSanaluokka) {
+        for (Sanaluokka luokka : this.haeKaannoksenSanaluokka(englanti)) {
             if (luokka.equals(Sanaluokka.VERBI)) {
                 return true;
             }

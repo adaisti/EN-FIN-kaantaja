@@ -46,20 +46,31 @@ public class SyntaksiSanakirja {
     
     
     public void alustaPrepositiotMappi() {
+        //testausta varten
+        this.prepositiot.put("on", Sijamuoto.ALLATIIVI);
+        
         // tänne tulee lista kaikista prepositiosta ja mikä Sijamuoto niihin liittyy
     }
     
     public void alustaNumerotMappi() {
-        // tänne lista numeroista ja niiden Sijamuodoista
+        this.numerot.put("1", Sijamuoto.NOMINATIIVI);
+        this.numerot.put("0", Sijamuoto.PARTITIIVI);
+        
+        for (int i = 2; i < 500; i++) {
+            this.numerot.put(Integer.toString(i), Sijamuoto.PARTITIIVI);
+        }
+        
+        String[] taulukko = {"zero", "two", "tree", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelwe"};
+        
+        for (String numero : taulukko) {
+            this.numerot.put(numero, Sijamuoto.PARTITIIVI);
+        }
     }
     
     public void alustaVerbipaatteetMappi() {
-       
-        // tänne lista siitä mitä verbipäätteitä on olemassa
-        // testausta varten jo jotain lisätty
-        this.verbipaatteet.put("s", Persoona.YKS1);
-        // hmm jotain täytyy tehdä tolle Persoona-osiolle koska
-        // se ei ole aina oleellinen
+        this.verbipaatteet.put("ing", Persoona.INFINITIIVI);
+        this.verbipaatteet.put("s", Persoona.YKS3);
+        
     }
     
     /**

@@ -5,10 +5,7 @@
  */
 package ada.kaannin;
 
-import ada.kaannin.englanti.Lauseke;
-import ada.kaannin.englanti.Sanakirja;
-import ada.kaannin.englanti.Sanaluokka;
-import ada.kaannin.englanti.SyntaksiSanakirja;
+import ada.kaannin.englanti.*;
 import ada.kaannin.kayttoliittyma.Kayttoliittyma;
 import ada.kaannin.kayttoliittyma.Teksti;
 import ada.kaannin.suomi.*;
@@ -20,10 +17,13 @@ import ada.kaannin.suomi.*;
 public class Main {
     public static void main(String[] args) {
         
-        Teksti lukija = new Teksti();
+        Sanakirja s = new Sanakirja();
+        SyntaksiSanakirja ss = new SyntaksiSanakirja();
+        ss.alustaKaikki();
         
-       Kayttoliittyma kl = new Kayttoliittyma(lukija);
-       kl.run();
+        Lause lause = new Lause(ss, s, "create 42 sts on two needles");
+        lause.jaaLausekkeiksi();
+        System.out.println(lause.lausekkeet());
         
     }
 }

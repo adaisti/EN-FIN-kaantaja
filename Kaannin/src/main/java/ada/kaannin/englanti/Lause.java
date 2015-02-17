@@ -47,9 +47,12 @@ public class Lause {
                 i++;
             }
             
+            lausekkeenTeksti += osat[i];
+            
             Lauseke lauseke = new Lauseke(lausekkeenTeksti, s, ss);
             lausekkeet.add(lauseke);
-            teksti = "";
+            lausekkeenTeksti = "";
+            i++;
         }
         
     }
