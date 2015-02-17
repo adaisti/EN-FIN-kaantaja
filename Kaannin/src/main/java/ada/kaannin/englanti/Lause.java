@@ -28,6 +28,19 @@ public class Lause {
         this.lausekkeet = new ArrayList<Lauseke>();
     }
     
+    public Lauseke kaannaLauseke(Lauseke lauseke) {
+        lauseke.kaanna();
+        return lauseke;
+    }
+    
+    public void kaanna() {
+        this.teksti = "";
+        for (Lauseke lauseke : lausekkeet) {
+            this.teksti += kaannaLauseke(lauseke).toString();
+            this.teksti += " ";
+        }
+    }
+    
     /**
      * Metodi jakaa luokalle konstruktorissa annetun
      * tekstin lausekkeiksi
@@ -131,8 +144,8 @@ public class Lause {
         return false;
     }
     
-    
-    
-    
-    
+    @Override
+    public String toString() {
+        return this.teksti;
+    }
 }

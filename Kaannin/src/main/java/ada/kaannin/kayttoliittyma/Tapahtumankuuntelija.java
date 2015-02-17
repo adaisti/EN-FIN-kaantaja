@@ -29,9 +29,11 @@ public class Tapahtumankuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        this.kohde.setText(this.lahde.getText());
-        // tällä hetkellä vain kopioi tekstin
-        // pitää muuttaa niin että käännetään lahde.getText();
+        
+        Teksti teksti = new Teksti(this.lahde.getText());
+        this.kohde.setText(teksti.kaanna());
+        
+//        this.kohde.setText(this.lahde.getText());
     }
 }
 

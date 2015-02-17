@@ -13,10 +13,22 @@ package ada.kaannin.englanti;
  */
 public class Hakemistonhallinta {
     
+    Sanakirja s;
+    SyntaksiSanakirja ss;
+    
     public Hakemistonhallinta() {
+        this.s = new Sanakirja();
+        this.ss = new SyntaksiSanakirja();
         
     }
     
+    public Sanakirja s() {
+        return this.s;
+    }
+    
+    public SyntaksiSanakirja ss() {
+        return this.ss;
+    }
         
     // tämä Hakemistonhallintaan
 //    public void lisaaPrepositio(String englanti, Sijamuoto sijamuoto) {

@@ -5,6 +5,9 @@
  */
 package ada.kaannin.englanti;
 
+import ada.kaannin.suomi.SuomiLauseke;
+import java.util.HashMap;
+
 /**
  *
  * Luokka operoi lausekkeita, eli yksiköitä, joissa voi olla useita sanoja, mutta
@@ -25,6 +28,36 @@ public class Lauseke {
         this.s = s;
         this.ss = ss;
     }
+    
+    
+    public void kaanna() {
+        
+        asetaLekseemi();
+        
+        this.teksti = "";
+        
+        HashMap<String, Sanaluokka> kaannos = s.haeKaannos(lekseemi);
+        
+        if (s.haeKaannoksenSanaluokka(lekseemi).get(0).equals(Sanaluokka.EISANALUOKKAA)) {
+            for (String englantiIsoillaKirjaimilla : kaannos.keySet()) {
+                teksti = englantiIsoillaKirjaimilla;
+            }
+        } else {
+            SuomiLauseke suomi = luoSuomilauseke();
+            teksti = suomi.taivuta();
+        }
+        
+    }
+    
+    public SuomiLauseke luoSuomilauseke() {
+        
+        
+        return null;
+        
+    }
+    
+    
+    
     
     /**
      * Jaetaan lausekkeen teksti sanoiksi
@@ -80,8 +113,6 @@ public class Lauseke {
             return true;
         } else if (voiOllaVerbi(mahdollinenLekseemi)) {
             if (etsiVerbipaate(mahdollinenLekseemi) != null) {
-                // lisaa verbipaate johonkin fiksuun kohtaan
-                // sinne minne tulee syntaksihakuun syötettävää infoa
                 return true;
             }
         }
@@ -134,6 +165,8 @@ public class Lauseke {
     public String toString() {
         return this.teksti;
     }
+    
+    
     
     
     
