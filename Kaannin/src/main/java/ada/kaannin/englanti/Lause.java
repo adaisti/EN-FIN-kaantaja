@@ -16,10 +16,10 @@ import java.util.ArrayList;
  */
 public class Lause {
     
-    String teksti;
-    ArrayList<Lauseke> lausekkeet;
-    SyntaksiSanakirja ss;
-    Sanakirja s;
+    private String teksti;
+    private ArrayList<Lauseke> lausekkeet;
+    private SyntaksiSanakirja ss;
+    private Sanakirja s;
     
     public Lause(SyntaksiSanakirja syntaksisanakirja, Sanakirja sanakirja, String teksti) {
         this.ss = syntaksisanakirja;
@@ -28,12 +28,24 @@ public class Lause {
         this.lausekkeet = new ArrayList<>();
     }
     
+    /**
+     * Metodi kääntää annetun lausekkeen
+     * 
+     * @param lauseke
+     * @return käännetty lauseke
+     */
+    
     public Lauseke kaannaLauseke(Lauseke lauseke) {
         lauseke.kaanna();
         return lauseke;
     }
     
+    /**
+     * Metodi kääntää lauseen tekstin lauseke kerrallaan
+     */
+    
     public void kaanna() {
+        jaaLausekkeiksi();
         this.teksti = "";
         for (Lauseke lauseke : lausekkeet) {
             this.teksti += kaannaLauseke(lauseke).toString();
@@ -58,6 +70,11 @@ public class Lause {
                 lausekkeenTeksti += osat[i];
                 lausekkeenTeksti += " ";
                 i++;
+                
+                if (i == osat.length - 1) {
+                    break;
+                }
+                
             }
             
             lausekkeenTeksti += osat[i];

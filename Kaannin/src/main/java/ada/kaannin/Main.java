@@ -17,16 +17,21 @@ import ada.kaannin.suomi.*;
 public class Main {
     public static void main(String[] args) {
         
-        Teksti teksti = new Teksti("Turn work. Create 24 sts. Turn work again.");
-        
+        Teksti teksti = new Teksti("Turn work, create 24 sts, turn work again");
         teksti.jaaLauseiksi();
         System.out.println(teksti.lauseet());
-        System.out.println("---");
-        teksti.kaanna();
-        System.out.println(teksti.kaanna());
+//
+//        System.out.println(teksti.kaanna());
         
 //        Kayttoliittyma kl = new Kayttoliittyma();
 //        kl.run();
+        
+        Sanakirja s = new Sanakirja();
+        SyntaksiSanakirja ss = new SyntaksiSanakirja();
+//        
+        Lause lause = new Lause(ss, s, " create 24 sts");    
+        lause.kaanna();
+        System.out.println(lause);
         
     }
 }

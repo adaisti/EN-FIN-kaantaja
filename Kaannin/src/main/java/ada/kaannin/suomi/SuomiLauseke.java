@@ -9,6 +9,9 @@ import ada.kaannin.englanti.Sanaluokka;
 
 /**
  *
+ * Luokka hyödyntää kaikkien muiden paketin luokkien ominaisuuksia ja luo
+ * niihin sopivia lausekkeita
+ * 
  * @author adahyvarinen
  */
 public class SuomiLauseke {
@@ -55,6 +58,11 @@ public class SuomiLauseke {
         this.aikamuoto = aikamuoto;
         this.sanaluokka = sanaluokka;
     }
+    
+    /**
+     * Asettaa sanan oikeaan sananmuotoon
+     * @return taivutusten mukainen sananmuoto
+     */
     
     public String taivuta() {
         if (this.sanaluokka.equals(Sanaluokka.ADJEKTIIVI)) {

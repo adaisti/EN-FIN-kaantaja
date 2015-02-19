@@ -187,6 +187,12 @@ public class Sanakirja {
         return false;
     }
     
+    /**
+     * Tutkii onko joku sana adverbi
+     * @param englanti
+     * @return true, jos on adverbi
+     */
+    
     public boolean onAdverbi(String englanti) {
         if ((englanti.substring(englanti.length() - 2)).equals("ly") && this.onPartikkeli(englanti)) {
             return true;

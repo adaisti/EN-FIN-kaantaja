@@ -27,15 +27,21 @@ public class Teksti {
         this.hh = new Hakemistonhallinta();
     }
     
+    /**
+     * Metodi kääntää Lause kerrallaan Tekstin tekstin
+     * 
+     * @return käännetty teksti
+     */
+    
     public String kaanna() {
         
         jaaLauseiksi();
         String kaannettyTeksti = "";
-        
+       
         for (Lause lause : lauseet) {
             if (!onValimerkkiLause(lause)) {
-                kaannettyTeksti += kaannaLause(lause).toString();
-                kaannettyTeksti += " ";
+                lause.kaanna();
+                kaannettyTeksti += lause.toString();
             } else {
                 kaannettyTeksti += lause.toString();
             }
@@ -44,10 +50,14 @@ public class Teksti {
         return kaannettyTeksti;
     }
     
+    /**
+     * Metodi jakaa tekstin Lauseiksi ja lisää ne lauseet-listaan
+     */
+    
     public void jaaLauseiksi() {
         String uusilause = "";
-        for (int i = 1; i < this.teksti.length(); i++) {
-            if ((this.teksti.charAt(i) == '.' && !hh.ss().numerot().keySet().contains(Character.toString(this.teksti.charAt(i - 1))))|| this.teksti.charAt(i) == ',' || this.teksti.charAt(i) == '!') {
+        for (int i = 0; i < this.teksti.length(); i++) {
+            if ((this.teksti.charAt(i) == '.' && (i > 0 && !hh.ss().numerot().keySet().contains(Character.toString(this.teksti.charAt(i - 1)))))|| this.teksti.charAt(i) == ',' || this.teksti.charAt(i) == '!') {
                 Lause lause = new Lause(hh.ss(), hh.s(), uusilause);
                 if(!uusilause.isEmpty()) {
                     lauseet.add(lause);
@@ -58,9 +68,20 @@ public class Teksti {
             } else {
                 uusilause += Character.toString(this.teksti.charAt(i));
             }
-            
+        }
+        
+        if (!uusilause.isEmpty()) {
+            Lause lause = new Lause(hh.ss(), hh.s(), uusilause);
+            lauseet.add(lause);
         }
     }
+    
+    /**
+     * Metodi tutkii onko jokin lause pelkkä välimerkki
+     * 
+     * @param lause
+     * @return true, jos lause on vain välimerkki
+     */
     
     public boolean onValimerkkiLause(Lause lause) {
         // onko tämä tarkistus hyvä näin päin?
@@ -72,10 +93,7 @@ public class Teksti {
         return lause.toString().charAt(0) == '.' || lause.toString().charAt(0) == ',' || lause.toString().charAt(0) == '!';
     }
     
-    public Lause kaannaLause(Lause lause) {
-        lause.kaanna();
-        return lause;
-    }
+    
     
     public ArrayList<Lause> lauseet() {
         return this.lauseet;

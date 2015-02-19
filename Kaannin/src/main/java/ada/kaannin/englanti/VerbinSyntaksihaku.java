@@ -11,6 +11,8 @@ import ada.kaannin.suomi.Persoona;
 
 /**
  *
+ * Luokka tutkii verbien syntaksia
+ * 
  * @author adahyvarinen
  */
 public class VerbinSyntaksihaku {

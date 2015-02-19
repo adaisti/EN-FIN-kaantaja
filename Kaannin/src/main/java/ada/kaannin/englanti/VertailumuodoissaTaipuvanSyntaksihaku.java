@@ -9,6 +9,8 @@ import ada.kaannin.suomi.Vertailumuoto;
 
 /**
  *
+ * Luokka tutkii vertailumuodoissa taipuvien sanojen syntaksia
+ * 
  * @author adahyvarinen
  */
 public class VertailumuodoissaTaipuvanSyntaksihaku {

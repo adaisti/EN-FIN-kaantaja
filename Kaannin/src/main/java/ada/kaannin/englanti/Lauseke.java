@@ -35,6 +35,10 @@ public class Lauseke {
         this.ss = ss;
     }
     
+    /**
+     * Metodi etsii lekseemin, hakee sille sanakirjasta käännöksen ja
+     * asettaa käännöksen suomi-paketin kautta oikeaan sananmuotoon
+     */
     
     public void kaanna() {
         
@@ -54,6 +58,14 @@ public class Lauseke {
         }
         this.teksti = kaannettyTeksti;
     }
+    
+    /**
+     * Metodi luo uuden suomi-paketin lausekkeen sanaluokan 
+     * ja sanaluokan mukaisetn syntaksien haun avulla
+     * 
+     * @return suomi-paketin mukainen lauseke
+     */
+    
     
     public SuomiLauseke luoSuomilauseke() {
         
@@ -132,6 +144,11 @@ public class Lauseke {
      */
     
     public boolean onMonikko(String mahdollinenLekseemi) {
+        
+        if(mahdollinenLekseemi.isEmpty()) {
+            return false;
+        }
+        
         if (mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - 1) == 's') {
             mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
             if (s.sisaltaaSanan(mahdollinenLekseemi) && s.onSubstantiivi(mahdollinenLekseemi)) {
@@ -198,8 +215,7 @@ public class Lauseke {
     public String lekseemi() {
         return this.lekseemi;
     }
-    
-    
+
     
     @Override
     public String toString() {

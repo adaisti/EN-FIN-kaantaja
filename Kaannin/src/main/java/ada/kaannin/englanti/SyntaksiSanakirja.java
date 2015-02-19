@@ -43,7 +43,9 @@ public class SyntaksiSanakirja {
         alustaVerbipaatteetMappi();
     }
     
-    
+    /**
+     * Alustaa prepositiot
+     */
     
     public void alustaPrepositiotMappi() {
         //testausta varten
@@ -51,6 +53,10 @@ public class SyntaksiSanakirja {
         
         // tänne tulee lista kaikista prepositiosta ja mikä Sijamuoto niihin liittyy
     }
+    
+    /**
+     * Alustaa numerot
+     */
     
     public void alustaNumerotMappi() {
         this.numerot.put("1", Sijamuoto.NOMINATIIVI);
@@ -66,6 +72,10 @@ public class SyntaksiSanakirja {
             this.numerot.put(numero, Sijamuoto.PARTITIIVI);
         }
     }
+    
+    /**
+     * Alustaa verbipäätteet
+     */
     
     public void alustaVerbipaatteetMappi() {
         this.verbipaatteet.put("ing", Persoona.INFINITIIVI);
