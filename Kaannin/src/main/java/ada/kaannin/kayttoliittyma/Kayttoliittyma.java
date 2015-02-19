@@ -22,10 +22,8 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Teksti lukija;
 
-    public Kayttoliittyma(Teksti lukija) {
-        this.lukija = lukija;
+    public Kayttoliittyma() {
     }
 
     @Override
@@ -58,7 +56,7 @@ public class Kayttoliittyma implements Runnable {
         textAreaVasen.setLineWrap(true);
         textAreaOikea.setLineWrap(true);
         
-        Tapahtumankuuntelija kuuntelija = new Tapahtumankuuntelija(lukija, textAreaVasen, textAreaOikea);
+        Tapahtumankuuntelija kuuntelija = new Tapahtumankuuntelija(textAreaVasen, textAreaOikea);
         kaannaNappi.addActionListener(kuuntelija);
 
 

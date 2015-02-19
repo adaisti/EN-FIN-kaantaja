@@ -25,7 +25,7 @@ public class Lause {
         this.ss = syntaksisanakirja;
         this.s = sanakirja;
         this.teksti = teksti;
-        this.lausekkeet = new ArrayList<Lauseke>();
+        this.lausekkeet = new ArrayList<>();
     }
     
     public Lauseke kaannaLauseke(Lauseke lauseke) {

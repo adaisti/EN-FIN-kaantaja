@@ -34,6 +34,10 @@ public class NomininSyntaksihaku {
     }
     
     
+    public NomininLuku luku() {
+        return NomininLuku.YKSIKKO;
+    }
+    
     /**
      * Etsii nominiin liittyvän sijamuodon muiden lausekkeen sanojen perusteella
      * 

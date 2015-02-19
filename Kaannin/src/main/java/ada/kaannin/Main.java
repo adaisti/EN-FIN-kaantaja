@@ -17,13 +17,16 @@ import ada.kaannin.suomi.*;
 public class Main {
     public static void main(String[] args) {
         
-        Sanakirja s = new Sanakirja();
-        SyntaksiSanakirja ss = new SyntaksiSanakirja();
-        ss.alustaKaikki();
+        Teksti teksti = new Teksti("Turn work. Create 24 sts. Turn work again.");
         
-        Lause lause = new Lause(ss, s, "create 42 sts on two needles");
-        lause.jaaLausekkeiksi();
-        System.out.println(lause.lausekkeet());
+        teksti.jaaLauseiksi();
+        System.out.println(teksti.lauseet());
+        System.out.println("---");
+        teksti.kaanna();
+        System.out.println(teksti.kaanna());
+        
+//        Kayttoliittyma kl = new Kayttoliittyma();
+//        kl.run();
         
     }
 }

@@ -19,7 +19,17 @@ public class Hakemistonhallinta {
     public Hakemistonhallinta() {
         this.s = new Sanakirja();
         this.ss = new SyntaksiSanakirja();
-        
+        alustaSanakirjat();
+    }
+    
+    
+    public void alustaSanakirja() {
+        // tee jotain
+    }
+    
+    public void alustaSanakirjat() {
+        ss.alustaKaikki();
+        alustaSanakirja();
     }
     
     public Sanakirja s() {
@@ -29,9 +39,4 @@ public class Hakemistonhallinta {
     public SyntaksiSanakirja ss() {
         return this.ss;
     }
-        
-    // tämä Hakemistonhallintaan
-//    public void lisaaPrepositio(String englanti, Sijamuoto sijamuoto) {
-//        this.prepositiot.put(englanti, sijamuoto);
-//    }
 }

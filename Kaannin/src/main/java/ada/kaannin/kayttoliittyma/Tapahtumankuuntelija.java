@@ -19,12 +19,10 @@ public class Tapahtumankuuntelija implements ActionListener {
 
     private JTextArea lahde;
     private JTextArea kohde;
-    private Teksti lukija;
 
-    public Tapahtumankuuntelija(Teksti lukija, JTextArea lahde, JTextArea kohde) {
+    public Tapahtumankuuntelija(JTextArea lahde, JTextArea kohde) {
         this.lahde = lahde;
         this.kohde = kohde;
-        this.lukija = lukija;
     }
 
     @Override

@@ -187,5 +187,13 @@ public class Sanakirja {
         return false;
     }
     
+    public boolean onAdverbi(String englanti) {
+        if ((englanti.substring(englanti.length() - 2)).equals("ly") && this.onPartikkeli(englanti)) {
+            return true;
+        }
+        return false;
+    }
+    
+    
     
 }

@@ -5,7 +5,13 @@
  */
 package ada.kaannin.englanti;
 
+import ada.kaannin.suomi.Aikamuoto;
+import ada.kaannin.suomi.Modus;
+import ada.kaannin.suomi.NomininLuku;
+import ada.kaannin.suomi.Persoona;
+import ada.kaannin.suomi.Sijamuoto;
 import ada.kaannin.suomi.SuomiLauseke;
+import ada.kaannin.suomi.Vertailumuoto;
 import java.util.HashMap;
 
 /**
@@ -32,30 +38,57 @@ public class Lauseke {
     
     public void kaanna() {
         
+        String kaannettyTeksti = "";
+        
         asetaLekseemi();
-        
-        this.teksti = "";
-        
+                
         HashMap<String, Sanaluokka> kaannos = s.haeKaannos(lekseemi);
         
         if (s.haeKaannoksenSanaluokka(lekseemi).get(0).equals(Sanaluokka.EISANALUOKKAA)) {
             for (String englantiIsoillaKirjaimilla : kaannos.keySet()) {
-                teksti = englantiIsoillaKirjaimilla;
+                kaannettyTeksti = englantiIsoillaKirjaimilla;
             }
         } else {
             SuomiLauseke suomi = luoSuomilauseke();
-            teksti = suomi.taivuta();
+            kaannettyTeksti = suomi.taivuta();
         }
-        
+        this.teksti = kaannettyTeksti;
     }
     
     public SuomiLauseke luoSuomilauseke() {
         
+        NomininSyntaksihaku nsh = new NomininSyntaksihaku(ss, this.teksti);
+        VertailumuodoissaTaipuvanSyntaksihaku vtsh = new VertailumuodoissaTaipuvanSyntaksihaku(ss, this.teksti);
+        VerbinSyntaksihaku vsh = new VerbinSyntaksihaku(ss, this.teksti);
         
-        return null;
+        Sijamuoto sijamuoto = nsh.sijamuoto();
+        NomininLuku luku = nsh.luku();
+        Vertailumuoto vertailumuoto = vtsh.vertailumuoto();
+        Persoona persoona = vsh.persoona();
+        Aikamuoto aikamuoto = vsh.aikamuoto();
+        Modus modus = vsh.modus();
+        
+        final Sanaluokka luokka = s.haeKaannoksenSanaluokka(lekseemi).get(0);
+        
+        if (luokka.equals(Sanaluokka.SUBSTANTIIVI)) {
+            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto);
+        } else if (luokka.equals(Sanaluokka.ADJEKTIIVI)) {
+            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto, vertailumuoto);
+        } else if (luokka.equals(Sanaluokka.PRONOMINI)) {
+            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto);
+        } else if (luokka.equals(Sanaluokka.NUMERAALI)) {
+            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto);
+        } else if (luokka.equals(Sanaluokka.VERBI)) {
+            return new SuomiLauseke(luokka, lekseemi, persoona, modus, aikamuoto);
+        } else if (luokka.equals(Sanaluokka.PARTIKKELI)) {
+            if (s.onAdverbi(teksti)) {
+                return new SuomiLauseke(luokka, lekseemi, vertailumuoto);
+            }
+        }
+        
+        return new SuomiLauseke(luokka, lekseemi);
         
     }
-    
     
     
     
@@ -79,8 +112,15 @@ public class Lauseke {
         if (onMonikko(mahdollinenLekseemi)) {
             mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
         }
-        // tarkistetaan onko verbipääte
-        // tarkistetaanko myös onko edes Sanakirjassa?
+        
+        if(onVerbimuoto(mahdollinenLekseemi)) {
+            //muunnetaan infinitiiviksi
+        }
+        
+        if (!s.sisaltaaSanan(mahdollinenLekseemi)) {
+            mahdollinenLekseemi = mahdollinenLekseemi.toUpperCase();
+        }
+        
         this.lekseemi = mahdollinenLekseemi;
     }
     

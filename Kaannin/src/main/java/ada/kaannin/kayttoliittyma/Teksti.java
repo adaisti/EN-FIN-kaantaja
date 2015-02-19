@@ -29,6 +29,7 @@ public class Teksti {
     
     public String kaanna() {
         
+        jaaLauseiksi();
         String kaannettyTeksti = "";
         
         for (Lause lause : lauseet) {
@@ -48,7 +49,10 @@ public class Teksti {
         for (int i = 1; i < this.teksti.length(); i++) {
             if ((this.teksti.charAt(i) == '.' && !hh.ss().numerot().keySet().contains(Character.toString(this.teksti.charAt(i - 1))))|| this.teksti.charAt(i) == ',' || this.teksti.charAt(i) == '!') {
                 Lause lause = new Lause(hh.ss(), hh.s(), uusilause);
-                lauseet.add(lause);
+                if(!uusilause.isEmpty()) {
+                    lauseet.add(lause);
+                    uusilause = "";
+                }
                 Lause valimerkkilause = new Lause(hh.ss(), hh.s(), Character.toString(this.teksti.charAt(i)));
                 lauseet.add(valimerkkilause);
             } else {
@@ -59,10 +63,13 @@ public class Teksti {
     }
     
     public boolean onValimerkkiLause(Lause lause) {
-        if (lause.toString().charAt(0) == '.' || lause.toString().charAt(0) == ',' || lause.toString().charAt(0) == '!') {
+        // onko tämä tarkistus hyvä näin päin?
+        // vai pitäisikö se tehdä jossain muualla?
+        if (lause.toString().isEmpty()) {
             return true;
         }
-        return false;
+        
+        return lause.toString().charAt(0) == '.' || lause.toString().charAt(0) == ',' || lause.toString().charAt(0) == '!';
     }
     
     public Lause kaannaLause(Lause lause) {
@@ -70,4 +77,7 @@ public class Teksti {
         return lause;
     }
     
+    public ArrayList<Lause> lauseet() {
+        return this.lauseet;
+    }
 }
