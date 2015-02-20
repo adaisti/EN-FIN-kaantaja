@@ -17,3 +17,12 @@
 - 4.2. 3h: koodaaminen
 - 5.2. 3h: koodaaminen ja javadocin opettelu
 - 6.2. 2h: javadocin parantelu, koodaaminen
+- 9.2. 3h: koodaaminen
+- 10.2. 3h: testien kirjoittaminen
+- 11.2. 3h: testien parantelu ja koodin korjailu
+- 12.2. 2h: koodaaminen
+- 13.2. 3h: kaavioiden piirtäminen ja javadocin kirjoittaminen
+- 16.2. 3h: testien korjailu
+- 17.2. 4h: koodaaminen
+- 19.2. 2h: koodaaminen, javadocin täydentäminen
+- 20.2. 2h: kaavioiden päivittäminen ja koodaaminen
