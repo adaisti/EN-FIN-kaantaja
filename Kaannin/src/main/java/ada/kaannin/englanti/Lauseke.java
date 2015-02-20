@@ -12,6 +12,7 @@ import ada.kaannin.suomi.Persoona;
 import ada.kaannin.suomi.Sijamuoto;
 import ada.kaannin.suomi.SuomiLauseke;
 import ada.kaannin.suomi.Vertailumuoto;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -44,6 +45,11 @@ public class Lauseke {
         
         String kaannettyTeksti = "";
         
+        if (etsiNumeronKaannos() != null) {
+            kaannettyTeksti += etsiNumeronKaannos();
+            kaannettyTeksti += " ";
+        }
+        
         asetaLekseemi();
                 
         HashMap<String, Sanaluokka> kaannos = s.haeKaannos(lekseemi);
@@ -57,6 +63,27 @@ public class Lauseke {
             kaannettyTeksti = suomi.taivuta();
         }
         this.teksti = kaannettyTeksti;
+    }
+    
+    
+    public String etsiNumeronKaannos() {
+        for (String suomi : s.haeKaannos(etsiNumeroita()).keySet()) {
+            if (s.haeKaannoksenSanaluokka(etsiNumeroita()).equals(Sanaluokka.NUMERAALI)) {
+                return suomi;
+            }
+        }
+        return null;
+    }
+    
+    
+    public String etsiNumeroita() {
+
+        for (int i = 0; i < jaaSanoiksi().length; i++) {
+            if (s.onNumeraali(jaaSanoiksi()[i])) {
+                return jaaSanoiksi()[i];
+            }
+        }
+        return null;
     }
     
     /**

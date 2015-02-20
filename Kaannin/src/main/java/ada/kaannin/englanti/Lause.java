@@ -28,17 +28,6 @@ public class Lause {
         this.lausekkeet = new ArrayList<>();
     }
     
-    /**
-     * Metodi kääntää annetun lausekkeen
-     * 
-     * @param lauseke
-     * @return käännetty lauseke
-     */
-    
-    public Lauseke kaannaLauseke(Lauseke lauseke) {
-        lauseke.kaanna();
-        return lauseke;
-    }
     
     /**
      * Metodi kääntää lauseen tekstin lauseke kerrallaan
@@ -48,7 +37,8 @@ public class Lause {
         jaaLausekkeiksi();
         this.teksti = "";
         for (Lauseke lauseke : lausekkeet) {
-            this.teksti += kaannaLauseke(lauseke).toString();
+            lauseke.kaanna();
+            this.teksti += lauseke.toString();
             this.teksti += " ";
         }
     }
@@ -69,12 +59,12 @@ public class Lause {
             while (!onLausekkeenLoppu(osat[i])) {
                 lausekkeenTeksti += osat[i];
                 lausekkeenTeksti += " ";
-                i++;
                 
-                if (i == osat.length - 1) {
+                if (i > osat.length - 2) {
                     break;
                 }
                 
+                i++;
             }
             
             lausekkeenTeksti += osat[i];
