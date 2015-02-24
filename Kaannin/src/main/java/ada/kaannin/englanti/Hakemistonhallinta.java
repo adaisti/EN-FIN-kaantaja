@@ -5,6 +5,10 @@
  */
 package ada.kaannin.englanti;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  *
  * Luokan tarkoituksena on kontrolloida sanakirjoja ja muuta hakemistoa
@@ -13,21 +17,57 @@ package ada.kaannin.englanti;
  */
 public class Hakemistonhallinta {
     
-    Sanakirja s;
-    SyntaksiSanakirja ss;
+    private Sanakirja s;
+    private SyntaksiSanakirja ss;
     
-    public Hakemistonhallinta() {
+    public Hakemistonhallinta() throws FileNotFoundException {
         this.s = new Sanakirja();
         this.ss = new SyntaksiSanakirja();
         alustaSanakirjat();
     }
     
     
-    public void alustaSanakirja() {
-        // tee jotain
+    public void alustaSanakirja() throws FileNotFoundException {
+        Scanner tiedostonlukija = new Scanner(new File("src/main/java/ada/kaannin/englanti/sanat.txt"));
+
+        while(tiedostonlukija.hasNextLine()) {
+            String rivi = tiedostonlukija.nextLine();
+            String[] osat = rivi.split(" ");
+
+            if (osat.length >= 3) {
+                Sanaluokka luokka = Sanaluokka.EISANALUOKKAA;
+                
+                switch (osat[osat.length - 1]) {
+                    case "s": 
+                        luokka = Sanaluokka.SUBSTANTIIVI;
+                        break;
+                    case "a": 
+                        luokka = Sanaluokka.ADJEKTIIVI;
+                        break;
+                    case "n": 
+                        luokka = Sanaluokka.NUMERAALI;
+                        break;
+                    case "pr": 
+                        luokka = Sanaluokka.PRONOMINI;
+                        break;
+                    case "pa": 
+                        luokka = Sanaluokka.PARTIKKELI;
+                        break;
+                    case "v": 
+                        luokka = Sanaluokka.VERBI;
+                        break;
+                }
+                String englanti = "";
+                
+                for (int i = 0; i < osat.length - 2; i++) {
+                    englanti += osat[i];
+                }
+                s.lisaaKaannos(englanti, osat[osat.length - 2], luokka);
+            }
+        }
     }
     
-    public void alustaSanakirjat() {
+    public void alustaSanakirjat() throws FileNotFoundException {
         ss.alustaKaikki();
         alustaSanakirja();
     }

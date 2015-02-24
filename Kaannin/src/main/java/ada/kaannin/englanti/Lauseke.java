@@ -29,11 +29,14 @@ public class Lauseke {
     private Sanakirja s;
     private SyntaksiSanakirja ss;
     
+    private boolean monikkoisuus;
+    
     public Lauseke(String teksti, Sanakirja s, SyntaksiSanakirja ss) {
         this.teksti = teksti;
         this.lekseemi = "";
         this.s = s;
         this.ss = ss;
+        this.monikkoisuus = false;
     }
     
     /**
@@ -54,19 +57,30 @@ public class Lauseke {
                 
         HashMap<String, Sanaluokka> kaannos = s.haeKaannos(lekseemi);
         
+        if (kaannos == null) {
+            System.out.println("oli null");
+            return;
+        }
+        
         if (s.haeKaannoksenSanaluokka(lekseemi).get(0).equals(Sanaluokka.EISANALUOKKAA)) {
             for (String englantiIsoillaKirjaimilla : kaannos.keySet()) {
                 kaannettyTeksti = englantiIsoillaKirjaimilla;
             }
         } else {
-            SuomiLauseke suomi = luoSuomilauseke();
-            kaannettyTeksti = suomi.taivuta();
+            SuomiLauseke suomilauseke = null;
+            for (String suomi : kaannos.keySet()) {
+                suomilauseke = luoSuomilauseke(suomi);
+                break;
+            }
+            
+            kaannettyTeksti = suomilauseke.taivuta();
         }
         this.teksti = kaannettyTeksti;
     }
     
     
     public String etsiNumeronKaannos() {
+        if (etsiNumeroita() == null) return null;
         for (String suomi : s.haeKaannos(etsiNumeroita()).keySet()) {
             if (s.haeKaannoksenSanaluokka(etsiNumeroita()).equals(Sanaluokka.NUMERAALI)) {
                 return suomi;
@@ -86,22 +100,22 @@ public class Lauseke {
         return null;
     }
     
+    
+    
     /**
      * Metodi luo uuden suomi-paketin lausekkeen sanaluokan 
-     * ja sanaluokan mukaisetn syntaksien haun avulla
-     * 
+        ja sanaluokan mukaisesti syntaksien haun avulla
+     * @param suomi sanakirjan mukainen ensimmäinen käännös
      * @return suomi-paketin mukainen lauseke
      */
-    
-    
-    public SuomiLauseke luoSuomilauseke() {
+    public SuomiLauseke luoSuomilauseke(String suomi) {
         
         NomininSyntaksihaku nsh = new NomininSyntaksihaku(ss, this.teksti);
         VertailumuodoissaTaipuvanSyntaksihaku vtsh = new VertailumuodoissaTaipuvanSyntaksihaku(ss, this.teksti);
         VerbinSyntaksihaku vsh = new VerbinSyntaksihaku(ss, this.teksti);
         
         Sijamuoto sijamuoto = nsh.sijamuoto();
-        NomininLuku luku = nsh.luku();
+        NomininLuku luku = nsh.luku(monikkoisuus);
         Vertailumuoto vertailumuoto = vtsh.vertailumuoto();
         Persoona persoona = vsh.persoona();
         Aikamuoto aikamuoto = vsh.aikamuoto();
@@ -110,22 +124,22 @@ public class Lauseke {
         final Sanaluokka luokka = s.haeKaannoksenSanaluokka(lekseemi).get(0);
         
         if (luokka.equals(Sanaluokka.SUBSTANTIIVI)) {
-            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto);
+            return new SuomiLauseke(luokka, suomi, luku, sijamuoto);
         } else if (luokka.equals(Sanaluokka.ADJEKTIIVI)) {
-            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto, vertailumuoto);
+            return new SuomiLauseke(luokka, suomi, luku, sijamuoto, vertailumuoto);
         } else if (luokka.equals(Sanaluokka.PRONOMINI)) {
-            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto);
+            return new SuomiLauseke(luokka, suomi, luku, sijamuoto);
         } else if (luokka.equals(Sanaluokka.NUMERAALI)) {
-            return new SuomiLauseke(luokka, lekseemi, luku, sijamuoto);
+            return new SuomiLauseke(luokka, suomi, luku, sijamuoto);
         } else if (luokka.equals(Sanaluokka.VERBI)) {
-            return new SuomiLauseke(luokka, lekseemi, persoona, modus, aikamuoto);
+            return new SuomiLauseke(luokka, suomi, persoona, modus, aikamuoto);
         } else if (luokka.equals(Sanaluokka.PARTIKKELI)) {
             if (s.onAdverbi(teksti)) {
-                return new SuomiLauseke(luokka, lekseemi, vertailumuoto);
+                return new SuomiLauseke(luokka, suomi, vertailumuoto);
             }
         }
         
-        return new SuomiLauseke(luokka, lekseemi);
+        return new SuomiLauseke(luokka, suomi);
         
     }
     
@@ -155,11 +169,6 @@ public class Lauseke {
         if(onVerbimuoto(mahdollinenLekseemi)) {
             //muunnetaan infinitiiviksi
         }
-        
-        if (!s.sisaltaaSanan(mahdollinenLekseemi)) {
-            mahdollinenLekseemi = mahdollinenLekseemi.toUpperCase();
-        }
-        
         this.lekseemi = mahdollinenLekseemi;
     }
     
@@ -179,6 +188,7 @@ public class Lauseke {
         if (mahdollinenLekseemi.charAt(mahdollinenLekseemi.length() - 1) == 's') {
             mahdollinenLekseemi = mahdollinenLekseemi.substring(0, mahdollinenLekseemi.length() - 1);
             if (s.sisaltaaSanan(mahdollinenLekseemi) && s.onSubstantiivi(mahdollinenLekseemi)) {
+                this.monikkoisuus = true;
                 return true;
             }
         }

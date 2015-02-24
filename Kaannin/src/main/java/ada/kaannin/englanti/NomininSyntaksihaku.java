@@ -34,7 +34,10 @@ public class NomininSyntaksihaku {
     }
     
     
-    public NomininLuku luku() {
+    public NomininLuku luku(boolean onMonikko) {
+        if (onMonikko) {
+            return NomininLuku.MONIKKO;
+        }
         return NomininLuku.YKSIKKO;
     }
     

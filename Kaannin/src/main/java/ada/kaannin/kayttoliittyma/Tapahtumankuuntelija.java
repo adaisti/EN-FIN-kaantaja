@@ -13,6 +13,9 @@ package ada.kaannin.kayttoliittyma;
  */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextArea;
 
 public class Tapahtumankuuntelija implements ActionListener {
@@ -28,7 +31,12 @@ public class Tapahtumankuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         
-        Teksti teksti = new Teksti(this.lahde.getText());
+        Teksti teksti = null;
+        try {
+            teksti = new Teksti(this.lahde.getText());
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Tapahtumankuuntelija.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.kohde.setText(teksti.kaanna());
         
 //        this.kohde.setText(this.lahde.getText());

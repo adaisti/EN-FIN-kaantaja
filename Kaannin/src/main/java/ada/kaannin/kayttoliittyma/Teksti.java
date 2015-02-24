@@ -7,6 +7,7 @@ package ada.kaannin.kayttoliittyma;
 
 import ada.kaannin.englanti.Hakemistonhallinta;
 import ada.kaannin.englanti.Lause;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,7 @@ public class Teksti {
     private ArrayList<Lause> lauseet;
     private Hakemistonhallinta hh;
     
-    public Teksti (String teksti) {
+    public Teksti (String teksti) throws FileNotFoundException {
         this.teksti = teksti;
         this.lauseet = new ArrayList<>();
         this.hh = new Hakemistonhallinta();

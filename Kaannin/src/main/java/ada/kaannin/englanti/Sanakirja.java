@@ -62,11 +62,11 @@ public class Sanakirja {
      */
     
     public HashMap<String, Sanaluokka> haeKaannos(String englanti) {
-        if (this.kaannokset.containsKey(englanti)) {
-            return this.kaannokset.get(englanti);
+        if (this.kaannokset.containsKey(englanti.toLowerCase())) {
+            return this.kaannokset.get(englanti.toLowerCase());
         }
-        
-        HashMap eiKaannosta = new HashMap<>();
+
+        HashMap<String, Sanaluokka> eiKaannosta = new HashMap<>();
         eiKaannosta.put(englanti.toUpperCase(), Sanaluokka.EISANALUOKKAA);
         return eiKaannosta;
     }
