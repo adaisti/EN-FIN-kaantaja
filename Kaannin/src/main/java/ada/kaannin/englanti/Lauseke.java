@@ -170,6 +170,7 @@ public class Lauseke {
             //muunnetaan infinitiiviksi
         }
         this.lekseemi = mahdollinenLekseemi;
+        this.lekseemi = this.lekseemi.toLowerCase();
     }
     
     /**

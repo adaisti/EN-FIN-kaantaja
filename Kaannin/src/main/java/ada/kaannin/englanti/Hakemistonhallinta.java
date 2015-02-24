@@ -28,7 +28,7 @@ public class Hakemistonhallinta {
     
     
     public void alustaSanakirja() throws FileNotFoundException {
-        Scanner tiedostonlukija = new Scanner(new File("src/main/java/ada/kaannin/englanti/sanat.txt"));
+        Scanner tiedostonlukija = new Scanner(new File("src/main/resources/sanat.txt"));
 
         while(tiedostonlukija.hasNextLine()) {
             String rivi = tiedostonlukija.nextLine();
