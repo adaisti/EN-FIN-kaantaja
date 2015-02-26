@@ -25,8 +25,6 @@ public class Adjektiivi extends Nomini implements VertailumuodoissaTaipuva {
         this.vertailumuoto = vertailumuoto;
     }
 
-    
-    
     /*
     * Toteuttaa VertailumuodoissaTaipuva-rajapinnan
     * Asettaa sananmuodon oikeaan vertailumuotoon

@@ -58,7 +58,6 @@ public class Lauseke {
         HashMap<String, Sanaluokka> kaannos = s.haeKaannos(lekseemi);
         
         if (kaannos == null) {
-            System.out.println("oli null");
             return;
         }
         
@@ -89,6 +88,10 @@ public class Lauseke {
         return null;
     }
     
+    /**
+     * Metodi tutkii onko joku lausekkeen sanoista numero
+     * @return numerosana, jos numeroita on, muuten null
+     */
     
     public String etsiNumeroita() {
 

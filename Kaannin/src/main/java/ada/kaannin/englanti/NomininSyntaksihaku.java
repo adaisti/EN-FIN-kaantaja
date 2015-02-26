@@ -33,6 +33,12 @@ public class NomininSyntaksihaku {
         this.numero = 0;
     }
     
+    /**
+     * Metodi tutkii mikä saneen luku on
+     * 
+     * @param onMonikko
+     * @return monikko, jos sana on monikossa, muuten yksikkö
+     */
     
     public NomininLuku luku(boolean onMonikko) {
         if (onMonikko) {

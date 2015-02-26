@@ -39,7 +39,6 @@ public class Tapahtumankuuntelija implements ActionListener {
         }
         this.kohde.setText(teksti.kaanna());
         
-//        this.kohde.setText(this.lahde.getText());
     }
 }
 

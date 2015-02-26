@@ -27,10 +27,7 @@ public class MainTest {
     public void testMain() {
     }
     
-    public void testaa() {
-        assertTrue(true);
-        
-    }
+    
     
     
 }
