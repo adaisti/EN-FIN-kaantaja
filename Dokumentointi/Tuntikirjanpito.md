@@ -26,3 +26,7 @@
 - 17.2. 4h: koodaaminen
 - 19.2. 2h: koodaaminen, javadocin täydentäminen
 - 20.2. 2h: kaavioiden päivittäminen ja koodaaminen
+- 23.2. 4h: koodaaminen, debuggaaminen
+- 24.2. 4h: koodin parantelu, demoihin osallistuminen
+- 25.2. 2h: pienten muutosten teko ja epäonnistunut yritys tehdä .jar-tiedostoa
+- 26.2. 1,5h: dokumentoinnin päivittäminen
