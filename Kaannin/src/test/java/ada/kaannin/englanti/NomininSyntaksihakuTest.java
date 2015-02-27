@@ -5,6 +5,9 @@
  */
 package ada.kaannin.englanti;
 
+import ada.kaannin.suomi.NomininLuku;
+import ada.kaannin.suomi.Sijamuoto;
+import java.io.FileNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -15,31 +18,43 @@ import static org.junit.Assert.*;
  */
 public class NomininSyntaksihakuTest {
     
+    NomininSyntaksihaku nsh;
+    Hakemistonhallinta hh;
+    
     public NomininSyntaksihakuTest() {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws FileNotFoundException {
+        hh = new Hakemistonhallinta();
+        nsh = new NomininSyntaksihaku(hh.ss(), "needles");
     }
 
     @Test
     public void testLuku() {
+        assertEquals(NomininLuku.MONIKKO, nsh.luku(true));
     }
 
     @Test
-    public void testSijamuoto() {
+    public void testSijamuotoToimii() {
+        assertEquals(Sijamuoto.NOMINATIIVI, nsh.sijamuoto());
     }
 
     @Test
-    public void testHaePrepositiolla() {
+    public void testHaePrepositiollaToimii() {
+        nsh.haePrepositiolla();
+        assertEquals(Sijamuoto.NOMINATIIVI, nsh.getSijamuoto());
     }
 
     @Test
-    public void testHaeNumerolla() {
+    public void testHaeNumerollaToimii() {
+        nsh.haeNumerolla();
+        assertEquals(Sijamuoto.PARTITIIVI, nsh.getSijamuoto());
     }
 
     @Test
     public void testOnPrepositiolauseke() {
+        assertEquals(false, nsh.onPrepositiolauseke());
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package ada.kaannin.englanti;
 
+import java.io.FileNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -15,20 +16,31 @@ import static org.junit.Assert.*;
  */
 public class HakemistonhallintaTest {
     
+    private Hakemistonhallinta hh;
+    
     public HakemistonhallintaTest() {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws FileNotFoundException {
+        hh = new Hakemistonhallinta();
     }
 
     @Test
-    public void testAlustaSanakirja() {
+    public void testAlustaSanakirjaToimii() throws FileNotFoundException {
+        hh.alustaSanakirja();
+        assertEquals(true, hh.s().sisaltaaSanan("alternatively"));
     }
 
     @Test
-    public void testAlustaSanakirjat() {
+    public void testAlustaSanakirjatToimii() throws FileNotFoundException {
+        hh.alustaSanakirjat();
+        assertEquals(true, hh.ss().prepositiot().containsKey("on"));
     }
 
+    @Test
+    public void testSyoteToimii() {
+        assertEquals("alternatively vaihtoehtoisesti pa", hh.syote()[0]);
+    }
    
 }

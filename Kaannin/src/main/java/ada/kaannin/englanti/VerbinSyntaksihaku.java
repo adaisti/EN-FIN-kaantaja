@@ -23,17 +23,34 @@ public class VerbinSyntaksihaku {
         this.ss = ss;
     }
     
+    /**
+     * Tutkitaan lausekkeen modusta
+     * @return modus
+     */
+    
     public Modus modus() {
         return Modus.IMPERATIIVI;
     }
+    
+    /**
+     * Tutkitaan lausekkeen aikamuotoa
+     * 
+     * @return aikamuoto
+     */
     
     public Aikamuoto aikamuoto() {
         return Aikamuoto.PREESENS;
     }
     
-     public Persoona persoona() {
-         return Persoona.YKS2;
-     }
+    /**
+     * Tutkitaan lausekkeen persoonaa
+     * 
+     * @return persoona
+     */
+    
+    public Persoona persoona() {
+        return Persoona.YKS2;
+    }
     
     
 }

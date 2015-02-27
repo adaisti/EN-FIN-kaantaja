@@ -21,6 +21,12 @@ public class VertailumuodoissaTaipuvanSyntaksihaku {
         this.ss = ss;
     }
     
+    /**
+     * Metodi tutkii adjektiivilausekkeen vertailumuotoa
+     * 
+     * @return 
+     */
+    
     public Vertailumuoto vertailumuoto() {
         return Vertailumuoto.POSITIIVI;
     }

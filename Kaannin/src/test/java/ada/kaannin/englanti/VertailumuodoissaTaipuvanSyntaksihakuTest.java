@@ -5,6 +5,8 @@
  */
 package ada.kaannin.englanti;
 
+import ada.kaannin.suomi.Vertailumuoto;
+import java.io.FileNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -15,15 +17,21 @@ import static org.junit.Assert.*;
  */
 public class VertailumuodoissaTaipuvanSyntaksihakuTest {
     
+    private Hakemistonhallinta hh;
+    private VertailumuodoissaTaipuvanSyntaksihaku vtsh;
+    
     public VertailumuodoissaTaipuvanSyntaksihakuTest() {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws FileNotFoundException {
+        hh = new Hakemistonhallinta();
+        vtsh = new VertailumuodoissaTaipuvanSyntaksihaku(hh.ss(), "long");
     }
 
     @Test
     public void testVertailumuoto() {
+        assertEquals(Vertailumuoto.POSITIIVI, vtsh.vertailumuoto());
     }
     
 }

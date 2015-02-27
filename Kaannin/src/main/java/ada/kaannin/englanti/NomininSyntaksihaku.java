@@ -69,6 +69,10 @@ public class NomininSyntaksihaku {
      */
     
     public void haePrepositiolla() {
+        if (this.prepositiot.get(this.prepositio) == null) {
+            return;
+        }
+        
         this.sijamuoto = this.prepositiot.get(this.prepositio);
     }
     
@@ -78,10 +82,6 @@ public class NomininSyntaksihaku {
      */
     public void haeNumerolla() {
         
-        if (onPrepositiolauseke()) {
-            this.haePrepositiolla();
-        }
-       
         if (this.numero == 1) {
             this.sijamuoto = Sijamuoto.NOMINATIIVI;
         } else {
@@ -105,6 +105,10 @@ public class NomininSyntaksihaku {
         return false;
     }
     
+    
+    public Sijamuoto getSijamuoto() {
+        return this.sijamuoto;
+    }
     
     
 }

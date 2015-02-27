@@ -15,47 +15,51 @@ import static org.junit.Assert.*;
  */
 public class SyntaksiSanakirjaTest {
     
+    private SyntaksiSanakirja ss;
+    
     public SyntaksiSanakirjaTest() {
     }
     
     @Before
     public void setUp() {
+        ss = new SyntaksiSanakirja();
     }
 
     @Test
     public void testAlustaKaikki() {
+        ss.alustaKaikki();
+        assertEquals(true, ss.verbipaatteet().containsKey("ing"));
+    }
+
+
+    @Test
+    public void testAlustaVerbipaatteetMappiToimii() {
+        ss.alustaVerbipaatteetMappi();
+        assertEquals(true, ss.verbipaatteet().containsKey("ing"));
     }
 
     @Test
-    public void testAlustaPrepositiotMappi() {
+    public void testAlustaArtikkelitSettiToimii() {
+        ss.alustaArtikkelitSetti();
+        assertEquals(true, ss.artikkelit().contains("the"));
     }
 
     @Test
-    public void testAlustaNumerotMappi() {
+    public void testAlustaPrepositiotToimii() {
+        ss.alustaPrepositiotMappi();
+        assertEquals(true, ss.prepositiot().containsKey("on"));
     }
 
     @Test
-    public void testAlustaVerbipaatteetMappi() {
+    public void testAlustaNumerotToimiiLukusanoilla() {
+        ss.alustaNumerotMappi();
+        assertEquals(true, ss.numerot().containsKey("3"));
     }
 
     @Test
-    public void testAlustaArtikkelitSetti() {
-    }
-
-    @Test
-    public void testPrepositiot() {
-    }
-
-    @Test
-    public void testNumerot() {
-    }
-
-    @Test
-    public void testArtikkelit() {
-    }
-
-    @Test
-    public void testVerbipaatteet() {
+    public void testAlustaNumerotToimiiNumeromerkeilla() {
+        ss.alustaNumerotMappi();
+        assertEquals(true, ss.numerot().containsKey("two"));
     }
     
 }
