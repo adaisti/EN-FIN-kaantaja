@@ -30,7 +30,8 @@ Joitakin puutteita testauksessa on tällä hetkellä myös siksi, että osa luok
 toiminnallisuuksista, joita haluan niiden toteuttavan. Olen kuitenkin nähnyt tarpeelliseksi lisätä " lähes turhat" luokat jo 
 tässä vaiheessa ohjelmaan, koska haluan kehittää ohjelmaa myöhemmin eteenpäin, ja tällä tavoin sen rakenne on pysynyt
 selkeämpänä, ja jatkokehitys tulee olemaan helpompaa. Tällaisia luokkia ovat esimerkiksi englanti-paketin eri syntaksinhakuun
-tarkoitetut luokat, tai suomi-paketin Substantiivi ja Numeraali.
+tarkoitetut luokat, tai suomi-paketin Substantiivi ja Numeraali. Lisäksi abstrakteja luokkia ei voi JUnit-testeillä testata
+suoraan, joten olen testannut niitä ne perivien luokkien, kautta, käytännössä siis Taipuvaa ja Nominia Substantiivin avulla.
 
 Haastavaa testauksesta on tehnyt myös sen, että valtaosa ohjelmani metodeista on void-tyyppisiä, ja monet niistä luovat
 toisia oliota tai muuttavat niiden olotilaa. Siksi testatessa voi olla vaikea ottaa selvää siitä, onko mahdollinen vika juuri
