@@ -63,7 +63,6 @@ public class Lause {
                 if (i > osat.length - 2) {
                     break;
                 }
-                
                 i++;
             }
             

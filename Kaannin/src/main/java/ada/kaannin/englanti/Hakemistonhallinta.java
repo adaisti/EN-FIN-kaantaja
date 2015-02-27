@@ -53,28 +53,7 @@ public class Hakemistonhallinta {
             String[] osat = rivi.split(" ");
 
             if (osat.length >= 3) {
-                Sanaluokka luokka = Sanaluokka.EISANALUOKKAA;
-                
-                switch (osat[osat.length - 1]) {
-                    case "s": 
-                        luokka = Sanaluokka.SUBSTANTIIVI;
-                        break;
-                    case "a": 
-                        luokka = Sanaluokka.ADJEKTIIVI;
-                        break;
-                    case "n": 
-                        luokka = Sanaluokka.NUMERAALI;
-                        break;
-                    case "pr": 
-                        luokka = Sanaluokka.PRONOMINI;
-                        break;
-                    case "pa": 
-                        luokka = Sanaluokka.PARTIKKELI;
-                        break;
-                    case "v": 
-                        luokka = Sanaluokka.VERBI;
-                        break;
-                }
+                Sanaluokka luokka = maaraaSanaluokka(osat[osat.length - 1]);
                 String englanti = "";
                 
                 for (int i = 0; i < osat.length - 2; i++) {
@@ -84,6 +63,32 @@ public class Hakemistonhallinta {
             }
         }
     }
+    
+    public Sanaluokka maaraaSanaluokka(String lyhenne) {
+        Sanaluokka luokka;
+        switch (lyhenne) {
+            case "s": 
+                luokka = Sanaluokka.SUBSTANTIIVI;
+                return luokka;
+            case "a": 
+                luokka = Sanaluokka.ADJEKTIIVI;
+                return luokka;
+            case "n": 
+                luokka = Sanaluokka.NUMERAALI;
+                return luokka;
+            case "pr": 
+                luokka = Sanaluokka.PRONOMINI;
+                return luokka;
+            case "pa": 
+                luokka = Sanaluokka.PARTIKKELI;
+                return luokka;
+            case "v": 
+                luokka = Sanaluokka.VERBI;
+                return luokka;
+        }
+        return Sanaluokka.EISANALUOKKAA;
+    }
+    
     
     /**
      * Metodi alustaa Sanakirjan ja SyntaksiSanakirjan

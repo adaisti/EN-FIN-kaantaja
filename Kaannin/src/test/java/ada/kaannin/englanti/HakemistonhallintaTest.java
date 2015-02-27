@@ -42,5 +42,10 @@ public class HakemistonhallintaTest {
     public void testSyoteToimii() {
         assertEquals("alternatively vaihtoehtoisesti pa", hh.syote()[0]);
     }
-   
+    
+    @Test
+    public void testMaaraaSanaluokkaToimii() {
+        assertEquals(Sanaluokka.ADJEKTIIVI, hh.maaraaSanaluokka("a"));
+    }
+    
 }
