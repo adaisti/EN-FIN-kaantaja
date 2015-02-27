@@ -30,3 +30,4 @@
 - 24.2. 4h: koodin parantelu, demoihin osallistuminen
 - 25.2. 2h: pienten muutosten teko ja epäonnistunut yritys tehdä .jar-tiedostoa
 - 26.2. 1,5h: dokumentoinnin päivittäminen
+- 27.2. 3h: palautuksen viimeistely
