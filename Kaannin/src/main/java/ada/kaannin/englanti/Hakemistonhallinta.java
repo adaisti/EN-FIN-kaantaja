@@ -64,6 +64,13 @@ public class Hakemistonhallinta {
         }
     }
     
+    /**
+     * Antaa oikean sanaluokan annetun lyhenteen perusteella
+     * 
+     * @param lyhenne
+     * @return sanaluokka
+     */
+    
     public Sanaluokka maaraaSanaluokka(String lyhenne) {
         Sanaluokka luokka;
         switch (lyhenne) {
