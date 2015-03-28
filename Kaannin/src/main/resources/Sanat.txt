@@ -9,7 +9,7 @@ colour väri s
 contrasting vastakkainen a
 cast on luoda v
 decrease kaventaa v
-front etureuna s	
+front etureuna s
 following seuraava a
 increase lisätä v
 knit neuloa v
@@ -95,3 +95,9 @@ twelwe kaksitoista n
 again uudestaan pa
 move siirtää v
 needle neulepuikko s
+co luoda v
+then sitten pa
+and ja pa
+colour väri s
+centre keskus s
+red punainen a
